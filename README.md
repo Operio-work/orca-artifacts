@@ -11,6 +11,8 @@ works offline, and every screen is in English and Spanish.
   them in the app (`/d/new`) or write the file. See [docs/dashboards.md](docs/dashboards.md).
 - **Live pages:** any folder with an `index.html` is served as is, with its own card.
 - **Installable PWA:** install prompt, offline reading of the last pages you opened, app shortcuts.
+- **Phone alerts:** a push when something new waits for approval, or when a dashboard number crosses a line.
+- **Share to it:** on Android, share a link, text, image or PDF from any app; it lands as a draft page.
 - **Yours to brand:** name, logo, note links and colours come from one config file.
 
 ## Quick start
@@ -69,7 +71,7 @@ the default tokens, for your colours.
 | Variable | Default | |
 |---|---|---|
 | `ARTIFACTS_LIBRARY` | `./library`, else `./demo-library` | the library folder |
-| `ARTIFACTS_AUTH` | `none` | who is viewing: `none` (one shared set of pins), `tailscale` (Tailscale Serve identity headers), `header` (any proxy) |
+| `ARTIFACTS_AUTH` | `none` | who is viewing: `none` (one shared set of pins), `tailscale` (Tailscale Serve identity headers), `header` (any proxy), `orca` (signed in through ORCA, see below) |
 | `ARTIFACTS_USER_HEADER` | `x-forwarded-user` | with `header`: the login header your proxy sets |
 | `ARTIFACTS_USER_NAME_HEADER` | — | with `header`: display name header |
 | `ARTIFACTS_STORAGE` | `folder` | `git` commits the app's saves after 20 s of quiet |
@@ -77,9 +79,16 @@ the default tokens, for your colours.
 | `ARTIFACTS_PUBLISH_TOKEN` | — | turns on `POST /api/publish` for ORCA and scripts (24+ characters) |
 | `ARTIFACTS_PUBLISH_DIRECT` | `0` | `1` lets a publisher skip approval |
 | `ARTIFACTS_TZ` | config `timeZone`, else `UTC` | calendar days in dashboards |
+| `ARTIFACTS_ORCA_SECRET` | derived from the publish token | with `orca`: the secret ORCA signs people with |
+| `ARTIFACTS_ORCA_URL` | — | with `orca`: link to your ORCA panel on the "sign in from ORCA" page |
+| `ARTIFACTS_ALERT_MINUTES` | `10` | how often dashboard alerts are checked |
+| `ARTIFACTS_VAPID_SUBJECT` | project URL | push contact (`mailto:` or `https:`); keys are made on first use in `var/vapid.json` |
+| `ARTIFACTS_BASE` | — | **build time:** serve under a path, e.g. `/c/acme/artifacts` (`ARTIFACTS_OUT` picks the build folder) |
+| `BODY_SIZE_LIMIT` | `512K` | raise to `8M` so 5 MB pages and shared files fit (adapter-node setting) |
 
-The app has **no login of its own**. Keep it on `localhost`, a private network (Tailscale works well), or behind
-a proxy that signs people in. Anyone who can open it can edit dashboards and collections.
+The app has **no login of its own**. Keep it on `localhost`, a private network (Tailscale works well), behind
+a proxy that signs people in, or let ORCA sign people in (`ARTIFACTS_AUTH=orca`). Outside `orca` mode anyone who can
+open it can edit dashboards and collections.
 
 ## With ORCA
 
@@ -88,6 +97,12 @@ Agents publish pages and dashboards with `operio-orca artifact publish`; they ar
 **To approve** (with a count on the app icon) and nobody sees them on the list until a person approves.
 Routines refresh numbers with `operio-orca artifact data`. Turn it on with `ARTIFACTS_PUBLISH_TOKEN`; details in
 [docs/publishing.md](docs/publishing.md).
+
+**One sign-in.** With `ARTIFACTS_AUTH=orca` nobody signs in twice: the **Artifacts** button in the ORCA panel opens
+the app with a one-time ticket, and the app keeps the person signed in for 30 days. Behind ORCA Host (hosted ORCA)
+every request carries the person and their role instead; `client_viewer` can look and pin but not approve or edit.
+Both are signed with the same secret, by default derived from the publish token, so `operio-orca artifact setup`
+is the whole setup.
 
 **ORCA Managed by Operio** hosts both for you, with team roles, share links, alerts, backups, and dashboards
 built for your business: [make.operio.work](https://make.operio.work).

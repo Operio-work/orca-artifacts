@@ -1,7 +1,7 @@
 import { error, json } from '@sveltejs/kit';
 import { timingSafeEqual } from 'node:crypto';
 import type { RequestHandler } from './$types';
-import { PUBLISH_TOKEN } from '#lib/server/config.js';
+import { AUTH, PUBLISH_TOKEN } from '#lib/server/config.js';
 import { publish } from '#lib/server/publish.js';
 
 function authorized(h: string | null): boolean {
@@ -25,5 +25,6 @@ export const POST: RequestHandler = async ({ request }) => {
 export const GET: RequestHandler = async ({ request }) => {
 	if (!PUBLISH_TOKEN) error(404, 'publishing is off');
 	if (!authorized(request.headers.get('authorization'))) error(401, 'bad token');
-	return json({ ok: true, publish: true });
+	// sso: the app accepts ORCA sign-in tickets (/auth/orca), so ORCA's Artifacts button can sign people in.
+	return json({ ok: true, publish: true, sso: AUTH === 'orca' });
 };

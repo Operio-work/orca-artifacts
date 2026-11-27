@@ -118,7 +118,16 @@ export interface DashboardSpec {
 	filters?: FilterSpec[];
 	labels?: Record<string, Record<string, L10n>>; // field -> raw value -> label
 	widgets: Widget[];
+	alerts?: AlertSpec[]; // push alerts when a stat crosses a line
 	updated?: string;
+}
+
+/** Push an alert when stat widget `widget` (its id) makes `value op threshold` true. Fires once per crossing. */
+export interface AlertSpec {
+	widget: string;
+	op: '<' | '<=' | '>' | '>=' | '=' | '!=';
+	value: number;
+	message?: L10n; // default: "<widget title>: <value>"
 }
 
 export type Rows = Record<string, unknown>[];

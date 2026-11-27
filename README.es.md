@@ -49,8 +49,13 @@ library/
 El formato de `orca-artifacts.config.json` y todas las variables (`ARTIFACTS_AUTH`, `ARTIFACTS_STORAGE`, …)
 están en el [README en inglés](README.md#your-library).
 
-La app **no tiene inicio de sesión propio**. Déjala en `localhost`, en una red privada (Tailscale funciona bien)
-o detrás de un proxy que pida acceso. Quien pueda abrirla puede editar tableros y colecciones.
+La app **no tiene inicio de sesión propio**. Déjala en `localhost`, en una red privada (Tailscale funciona bien),
+detrás de un proxy que pida acceso, o deja que ORCA inicie la sesión (`ARTIFACTS_AUTH=orca`). Fuera del modo `orca`,
+quien pueda abrirla puede editar tableros y colecciones.
+
+**Alertas en el teléfono:** un aviso cuando hay algo nuevo por aprobar o cuando una cifra de un tablero cruza un
+límite (`alerts` en [docs/dashboards.md](docs/dashboards.md)). **Compartir a la app:** en Android, comparte un
+enlace, texto, imagen o PDF desde cualquier app y llega como borrador. Sube `BODY_SIZE_LIMIT=8M` para archivos grandes.
 
 ## Con ORCA
 
@@ -59,6 +64,10 @@ Los agentes publican páginas y tableros con `operio-orca artifact publish`; lle
 **Por aprobar** (con un número en el ícono de la app) y nadie los ve en la lista hasta que una persona los
 aprueba. Las rutinas actualizan cifras con `operio-orca artifact data`. Se activa con `ARTIFACTS_PUBLISH_TOKEN`;
 detalles en [docs/publishing.md](docs/publishing.md).
+
+**Una sola sesión.** Con `ARTIFACTS_AUTH=orca` nadie entra dos veces: el botón **Artifacts** del panel de ORCA
+abre la app con un pase de un solo uso, y la sesión dura 30 días. Detrás de ORCA Host (ORCA alojado) cada petición
+lleva a la persona y su rol; `client_viewer` puede ver y fijar, pero no aprobar ni editar.
 
 **ORCA Managed by Operio** aloja ambos por ti, con roles de equipo, enlaces para compartir, alertas, respaldos y
 tableros hechos para tu negocio: [make.operio.work](https://make.operio.work).

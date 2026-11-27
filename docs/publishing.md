@@ -27,3 +27,15 @@ Limits: 40 files, 5 MB per call; file names are letters, digits, `.`, `_`, `-` i
 js, json, svg, png, jpg, webp, gif, txt, md, pdf, woff2. Re-publishing a page or dashboard makes it a draft again.
 
 Answer: `{ "ok": true, "key": "page:report", "status": "draft", "url": "/report/" }`, or `422` with `problems`.
+`url` is the path inside the app (add your base path if you set `ARTIFACTS_BASE`).
+
+New drafts send a push alert to everyone who turned alerts on and may approve. Set `BODY_SIZE_LIMIT=8M` on the
+app so 5 MB calls fit (the Node adapter's default is 512 KB).
+
+## Sign-in from ORCA
+
+With `ARTIFACTS_AUTH=orca` the app trusts a person signed by ORCA (format: ORCA's `lib/identity.js`):
+`v1.<base64url JSON {u, n, r, t}>.<base64url HMAC-SHA256(secret, "v1." + payload)>`, at most 5 minutes old,
+role `r` one of `operio_admin`, `operio_ops`, `client_admin`, `client_viewer`. It arrives as the `X-Orca-User`
+header (a proxy such as ORCA Host) or once as `/auth/orca?ticket=…&return=/path` (then a 30-day cookie).
+The secret is `ARTIFACTS_ORCA_SECRET`, or `base64url(HMAC-SHA256(publish token, "orca-artifacts/sso/v1"))`.

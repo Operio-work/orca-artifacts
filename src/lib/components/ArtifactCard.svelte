@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { BASE } from '#lib/base.js';
 	import type { Collection, ViewItem } from '#lib/types.js';
 	import { t, tl, fmtDate } from '#lib/i18n.svelte.js';
 	import { Button } from '#lib/components/ui/button/index.js';
@@ -62,6 +63,7 @@
 			<DropdownMenu.Item onclick={() => onpin(item)}>
 				{#if item.pinned}<PinOff /> {t('unpin')}{:else}<Pin /> {t('pin')}{/if}
 			</DropdownMenu.Item>
+			{#if page.data.canEdit}
 			<DropdownMenu.Sub>
 				<DropdownMenu.SubTrigger><FolderInput /> {t('moveTo')}</DropdownMenu.SubTrigger>
 				<DropdownMenu.SubContent class="w-52">
@@ -81,7 +83,8 @@
 			</DropdownMenu.Sub>
 			<DropdownMenu.Item onclick={() => ontags(item)}><Tags /> {t('editTags')}</DropdownMenu.Item>
 			{#if item.kind === 'dashboard'}
-				<DropdownMenu.Item onclick={() => (location.href = `/d/${item.slug}/edit`)}><Pencil /> {t('edit')}</DropdownMenu.Item>
+				<DropdownMenu.Item onclick={() => (location.href = `${BASE}/d/${item.slug}/edit`)}><Pencil /> {t('edit')}</DropdownMenu.Item>
+			{/if}
 			{/if}
 			<DropdownMenu.Separator />
 			{#if noteUrl}

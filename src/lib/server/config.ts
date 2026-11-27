@@ -1,6 +1,7 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import type { Brand } from '#lib/types.js';
+import { ssoSecret } from './identity';
 
 /**
  * The library: the folder that holds your artifacts (site/, dashboards/, state/, var/).
@@ -21,12 +22,13 @@ export const STATE_DIR = resolve(REPO_DIR, 'state'); // shared organization (col
 export const VAR_DIR = resolve(REPO_DIR, 'var'); // per-viewer pins; keep out of git
 /** Folders under site/ that are app internals, not artifacts. */
 export const SITE_SKIP = new Set(['assets', 'archive']);
-export const RESERVED = new Set(['d', 'api', '_app', 'healthz', 'assets', 'archive', 'icons']);
+export const RESERVED = new Set(['d', 'api', '_app', 'healthz', 'assets', 'archive', 'icons', 'auth', 'share']);
 
 /** Who is viewing. none = everyone is "local"; tailscale = Tailscale Serve identity headers;
- *  header = any reverse proxy that sets ARTIFACTS_USER_HEADER (oauth2-proxy, Authelia, …). */
-export type AuthMode = 'none' | 'tailscale' | 'header';
-export const AUTH: AuthMode = (['none', 'tailscale', 'header'] as const).find((m) => m === process.env.ARTIFACTS_AUTH) ?? 'none';
+ *  header = any reverse proxy that sets ARTIFACTS_USER_HEADER (oauth2-proxy, Authelia, …);
+ *  orca = signed in through ORCA or ORCA Host (identity.ts). */
+export type AuthMode = 'none' | 'tailscale' | 'header' | 'orca';
+export const AUTH: AuthMode = (['none', 'tailscale', 'header', 'orca'] as const).find((m) => m === process.env.ARTIFACTS_AUTH) ?? 'none';
 export const USER_HEADER = (process.env.ARTIFACTS_USER_HEADER || 'x-forwarded-user').toLowerCase();
 export const USER_NAME_HEADER = (process.env.ARTIFACTS_USER_NAME_HEADER || '').toLowerCase();
 
@@ -42,6 +44,14 @@ const tok = process.env.ARTIFACTS_PUBLISH_TOKEN ?? '';
 export const PUBLISH_TOKEN = tok.length >= 24 ? tok : '';
 /** 1 = a publisher may skip the approval step (draft: false). Default: everything lands as a draft. */
 export const PUBLISH_DIRECT = process.env.ARTIFACTS_PUBLISH_DIRECT === '1';
+
+/** ARTIFACTS_AUTH=orca: the secret ORCA signs people with (default: derived from the publish token). */
+export const ORCA_SECRET = ssoSecret(process.env.ARTIFACTS_ORCA_SECRET ?? '', PUBLISH_TOKEN);
+/** Where to send someone who is not signed in (their ORCA panel). Optional. */
+export const ORCA_URL = /^https?:\/\//.test(process.env.ARTIFACTS_ORCA_URL ?? '') ? process.env.ARTIFACTS_ORCA_URL! : '';
+
+/** Push alerts: VAPID contact (mailto: or https:). Keys come from env or var/vapid.json (made on first use). */
+export const VAPID_SUBJECT = /^(mailto:|https:\/\/)/.test(process.env.ARTIFACTS_VAPID_SUBJECT ?? '') ? process.env.ARTIFACTS_VAPID_SUBJECT! : 'https://github.com/Operio-work/orca-artifacts';
 
 const DEFAULT_BRAND: Brand = {
 	name: 'ORCA Artifacts',

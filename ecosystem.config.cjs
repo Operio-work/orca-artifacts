@@ -10,8 +10,9 @@ module.exports = {
 				HOST: '127.0.0.1',
 				PORT: '5199',
 				ORIGIN: 'http://localhost:5199', // the URL people open (needed for form posts)
+				BODY_SIZE_LIMIT: '8M', // 5 MB pages and shared photos
 				ARTIFACTS_LIBRARY: './library', // your artifacts folder; default ./library, else ./demo-library
-				ARTIFACTS_AUTH: 'none', // none | tailscale | header
+				ARTIFACTS_AUTH: 'none', // none | tailscale | header | orca
 				ARTIFACTS_STORAGE: 'folder' // folder | git
 				// ARTIFACTS_GIT_PUSH: '1',
 				// ARTIFACTS_TZ: 'America/New_York',

@@ -46,6 +46,21 @@ optional `where` (row filter, below).
   ops `in`, `not`, `gte`, `lte`, `gt`, `lt`, `contains`, `exists`. Fields can be dotted (`owner.name`).
 - Dates are grouped by calendar day in the library time zone (`timeZone` in the config, or `ARTIFACTS_TZ`). Missing values show as "—".
 
+## Alerts
+
+Push a phone alert when a stat crosses a line. Give the stat widget an `id`, then:
+
+```json
+"alerts": [
+  { "widget": "leads-today", "op": "<", "value": 5, "message": { "es": "Hoy hay menos de 5 prospectos", "en": "Fewer than 5 leads today" } }
+]
+```
+
+`op`: `<` `<=` `>` `>=` `=` `!=`. The stat is read over all its rows (its `where` applies; page filters and the
+range picker don't). Checked every `ARTIFACTS_ALERT_MINUTES` (10) and right after new data arrives through
+`/api/publish`. An alert pushes once when it turns on, and again only after it has been off. Drafts never alert.
+People turn alerts on with the bell in the app bar (on iPhone, after adding the app to the Home Screen).
+
 ## Data that isn't in a page yet
 
 Have any script (cron, an ORCA routine, CI) write

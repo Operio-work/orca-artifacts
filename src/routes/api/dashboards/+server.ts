@@ -6,7 +6,8 @@ import { deleteDashboard, getDashboard, saveDashboard } from '#lib/server/dashbo
 import { RESERVED } from '#lib/server/config.js';
 
 /** Save (create or update). Body: { spec, previousSlug? } */
-export const POST: RequestHandler = async ({ request }) => {
+export const POST: RequestHandler = async ({ request, locals }) => {
+	if (!locals.canEdit) error(403, 'viewers cannot edit');
 	const b = await request.json().catch(() => null);
 	const spec = b?.spec as DashboardSpec;
 	const problems = validateSpec(spec);
@@ -20,7 +21,8 @@ export const POST: RequestHandler = async ({ request }) => {
 	return json({ ok: true, slug: spec.slug });
 };
 
-export const DELETE: RequestHandler = async ({ request }) => {
+export const DELETE: RequestHandler = async ({ request, locals }) => {
+	if (!locals.canEdit) error(403, 'viewers cannot edit');
 	const b = await request.json().catch(() => null);
 	if (typeof b?.slug !== 'string') error(400, 'slug required');
 	await deleteDashboard(b.slug);

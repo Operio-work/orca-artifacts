@@ -4,6 +4,7 @@
 	import { i18n } from '#lib/i18n.svelte.js';
 	import { tz } from '#lib/tz.js';
 	import { initPwa } from '#lib/pwa.svelte.js';
+	import { withBase } from '#lib/base.js';
 	import { Toaster } from '#lib/components/ui/sonner/index.js';
 	import * as Tooltip from '#lib/components/ui/tooltip/index.js';
 	let { data, children } = $props();
@@ -21,8 +22,8 @@
 </script>
 
 <svelte:head>
-	<link rel="icon" href={data.brand.logo} />
-	{#if data.brand.theme}<link rel="stylesheet" href={data.brand.theme} />{/if}
+	<link rel="icon" href={withBase(data.brand.logo)} />
+	{#if data.brand.theme}<link rel="stylesheet" href={withBase(data.brand.theme)} />{/if}
 </svelte:head>
 
 <Tooltip.Provider delayDuration={300}>

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { BASE } from '#lib/base.js';
 	import { page } from '$app/state';
 	import { invalidate, replaceState, goto } from '$app/navigation';
 	import { untrack } from 'svelte';
@@ -300,7 +301,7 @@
 <div class="mx-auto max-w-[1280px] px-4 pt-5 pb-16 sm:px-6">
 	<Brandbar>
 		{#snippet actions()}
-			<Button href="/d/new" size="sm"><Plus /> <span class="hidden sm:inline">{t('newDashboard')}</span></Button>
+			{#if page.data.canEdit}<Button href="{BASE}/d/new" size="sm"><Plus /> <span class="hidden sm:inline">{t('newDashboard')}</span></Button>{/if}
 		{/snippet}
 	</Brandbar>
 
@@ -332,7 +333,7 @@
 					<h2 id="pinned-h" class="label-mono mb-2 flex items-center gap-1.5"><Pin class="size-3.5" />{t('pinned')}</h2>
 					<div class="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3">
 						{#each pinnedItems as item (item.key)}
-							<ArtifactCard {item} {collections} {onpin} {onassign} {ontags} onnewcollection={newCollection} ontag={(x) => (tag = x)} {onreview} />
+							<ArtifactCard {item} {collections} {onpin} {onassign} {ontags} onnewcollection={newCollection} ontag={(x) => (tag = x)} onreview={page.data.canEdit ? onreview : undefined} />
 						{/each}
 					</div>
 				</section>
@@ -354,13 +355,13 @@
 				{:else if view === 'grid'}
 					<div class="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3">
 						{#each filtered as item (item.key)}
-							<ArtifactCard {item} {collections} {onpin} {onassign} {ontags} onnewcollection={newCollection} ontag={(x) => (tag = x)} {onreview} />
+							<ArtifactCard {item} {collections} {onpin} {onassign} {ontags} onnewcollection={newCollection} ontag={(x) => (tag = x)} onreview={page.data.canEdit ? onreview : undefined} />
 						{/each}
 					</div>
 				{:else}
 					<div class="overflow-hidden rounded-lg border bg-card">
 						{#each filtered as item (item.key)}
-							<ArtifactCard {item} {collections} view="list" {onpin} {onassign} {ontags} onnewcollection={newCollection} ontag={(x) => (tag = x)} {onreview} />
+							<ArtifactCard {item} {collections} view="list" {onpin} {onassign} {ontags} onnewcollection={newCollection} ontag={(x) => (tag = x)} onreview={page.data.canEdit ? onreview : undefined} />
 						{/each}
 					</div>
 				{/if}
@@ -386,7 +387,7 @@
 	<Command.List>
 		<Command.Empty>{t('empty')}</Command.Empty>
 		<Command.Group heading={t('newDashboard')}>
-			<Command.Item value="new dashboard nuevo tablero" onSelect={() => goto('/d/new')}><Plus /> {t('newDashboard')}</Command.Item>
+			<Command.Item value="new dashboard nuevo tablero" onSelect={() => goto(`${BASE}/d/new`)}><Plus /> {t('newDashboard')}</Command.Item>
 		</Command.Group>
 		{#if pinnedItems.length}
 			<Command.Group heading={t('pinned')}>

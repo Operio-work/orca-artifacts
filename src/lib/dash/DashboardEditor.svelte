@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { BASE } from '#lib/base.js';
 	import { goto } from '$app/navigation';
 	import { onMount, untrack } from 'svelte';
 	import { toast } from 'svelte-sonner';
@@ -49,7 +50,7 @@
 	// ---- available data ----
 	let files = $state<DataFile[]>([]);
 	onMount(async () => {
-		files = await (await fetch('/api/sources')).json();
+		files = await (await fetch(`${BASE}/api/sources`)).json();
 	});
 	const listOf = (file?: string, path?: string) => files.find((f) => f.file === file)?.lists.find((l) => l.path === (path ?? ''));
 	function fieldsOf(source?: string): string[] {
@@ -199,7 +200,7 @@
 			if (!r.ok) return toast.error(r.problems?.join(' · ') ?? 'Error');
 			dirty = false;
 			toast.success(t('saved'));
-			await goto(`/d/${r.slug}`, { invalidateAll: true });
+			await goto(`${BASE}/d/${r.slug}`, { invalidateAll: true });
 		} finally {
 			saving = false;
 		}
@@ -209,7 +210,7 @@
 		await api('/api/dashboards', { slug: previousSlug }, 'DELETE');
 		dirty = false;
 		toast.success(t('deleted'));
-		await goto('/', { invalidateAll: true });
+		await goto(`${BASE}/`, { invalidateAll: true });
 	}
 	function beforeunload(e: BeforeUnloadEvent) {
 		if (dirty) e.preventDefault();
@@ -405,7 +406,7 @@
 			{/if}
 			<div class="flex items-center gap-2">
 				<Button onclick={save} disabled={saving || problems.length > 0}>{t('save')}</Button>
-				<Button variant="outline" href={previousSlug ? `/d/${previousSlug}` : '/'}>{t('cancel')}</Button>
+				<Button variant="outline" href={previousSlug ? `${BASE}/d/${previousSlug}` : `${BASE}/`}>{t('cancel')}</Button>
 				{#if previousSlug}<Button variant="destructive" class="ml-auto" onclick={remove}><Trash /> {t('delete')}</Button>{/if}
 			</div>
 		</div>

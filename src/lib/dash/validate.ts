@@ -2,6 +2,7 @@ import type { DashboardSpec } from '#lib/types.js';
 
 const TYPES = new Set(['stat', 'bar', 'line', 'table', 'text']);
 const AGGS = new Set(['count', 'sum', 'avg', 'min', 'max', 'distinct']);
+const OPS = new Set(['<', '<=', '>', '>=', '=', '!=']);
 const FORMATS = new Set(['number', 'mxn', 'usd', 'percent', 'date', 'link', 'pill', 'text']);
 const isL10n = (v: unknown) =>
 	!!v && typeof v === 'object' && typeof (v as { es?: unknown }).es === 'string' && typeof (v as { en?: unknown }).en === 'string';
@@ -48,5 +49,18 @@ export function validateSpec(s: unknown): string[] {
 		if (w.type === 'table' && (!Array.isArray(w.columns) || !w.columns.length)) e.push(`${at}: needs columns`);
 		if (w.type === 'text' && !isL10n(w.text)) e.push(`${at}: text needs es and en`);
 	});
+	if (d.alerts !== undefined) {
+		if (!Array.isArray(d.alerts) || d.alerts.length > 20) e.push('alerts: a list of up to 20');
+		else
+			d.alerts.forEach((a, i) => {
+				const at = `alert ${i + 1}`;
+				const w = d.widgets.find((x) => x?.id && x.id === a?.widget);
+				if (!w) e.push(`${at}: widget must be the id of a stat widget`);
+				else if (w.type !== 'stat') e.push(`${at}: widget "${a.widget}" is a ${w.type}; alerts watch stat widgets`);
+				if (!OPS.has(a?.op)) e.push(`${at}: op must be ${[...OPS].join(' ')}`);
+				if (typeof a?.value !== 'number' || !Number.isFinite(a.value)) e.push(`${at}: value must be a number`);
+				if (a?.message !== undefined && !isL10n(a.message)) e.push(`${at}: message needs es and en`);
+			});
+	}
 	return e;
 }

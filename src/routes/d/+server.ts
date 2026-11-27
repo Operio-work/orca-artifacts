@@ -1,2 +1,3 @@
 import { redirect } from '@sveltejs/kit';
-export const GET = () => redirect(302, '/?kind=dashboard');
+import { BASE } from '#lib/base.js';
+export const GET = () => redirect(302, `${BASE}/?kind=dashboard`);

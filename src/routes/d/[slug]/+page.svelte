@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { BASE } from '#lib/base.js';
 	import { t, tl, fmtDate } from '#lib/i18n.svelte.js';
 	import { stateOp } from '#lib/api.js';
 	import Brandbar from '#lib/components/Brandbar.svelte';
@@ -25,7 +26,7 @@
 		await stateOp({ op: verdict, key: `dashboard:${spec.slug}` });
 		const { toast } = await import('svelte-sonner');
 		toast.success(t(verdict === 'approve' ? 'approved' : 'rejected'));
-		await goto(verdict === 'approve' ? `/d/${spec.slug}` : '/?drafts=1', { invalidateAll: true });
+		await goto(verdict === 'approve' ? `${BASE}/d/${spec.slug}` : `${BASE}/?drafts=1`, { invalidateAll: true });
 	}
 	async function togglePin() {
 		pinned = !pinned;
@@ -41,17 +42,19 @@
 			<Button variant="ghost" size="icon-sm" aria-label={pinned ? t('unpin') : t('pin')} aria-pressed={pinned} class={pinned ? 'text-ink' : ''} onclick={togglePin}>
 				<Pin class={pinned ? 'fill-current' : ''} />
 			</Button>
-			<Button variant="outline" size="sm" href={`/d/${spec.slug}/edit`}><Pencil /> <span class="hidden sm:inline">{t('edit')}</span></Button>
+			{#if data.canEdit}<Button variant="outline" size="sm" href={`${BASE}/d/${spec.slug}/edit`}><Pencil /> <span class="hidden sm:inline">{t('edit')}</span></Button>{/if}
 		{/snippet}
 	</Brandbar>
 
-	<a href="/" class="mt-5 inline-flex items-center gap-1 text-sm text-[var(--text-tertiary)] hover:text-[var(--text-primary)]"><ArrowLeft class="size-3.5" />{t('back')}</a>
+	<a href="{BASE}/" class="mt-5 inline-flex items-center gap-1 text-sm text-[var(--text-tertiary)] hover:text-[var(--text-primary)]"><ArrowLeft class="size-3.5" />{t('back')}</a>
 
 	{#if spec.status === 'draft'}
 		<div role="status" class="mt-4 flex flex-wrap items-center gap-3 rounded-lg border border-primary bg-accent px-4 py-3 text-sm">
 			<span class="min-w-0 flex-1">{t('draftBanner')}{#if spec.by} · {spec.by}{/if}</span>
-			<Button size="sm" onclick={() => decide('approve')}><Check /> {t('approve')}</Button>
-			<Button size="sm" variant="outline" onclick={() => decide('reject')}>{t('reject')}</Button>
+			{#if data.canEdit}
+				<Button size="sm" onclick={() => decide('approve')}><Check /> {t('approve')}</Button>
+				<Button size="sm" variant="outline" onclick={() => decide('reject')}>{t('reject')}</Button>
+			{/if}
 		</div>
 	{/if}
 	<header class="mt-2 mb-5">

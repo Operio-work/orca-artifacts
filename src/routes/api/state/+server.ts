@@ -9,6 +9,7 @@ const clean = (s: unknown, max = 40) => String(s ?? '').replace(/[\u0000-\u001f<
 export const POST: RequestHandler = async ({ request, locals }) => {
 	const b = await request.json().catch(() => null);
 	if (!b || typeof b.op !== 'string') error(400, 'bad request');
+	if (b.op !== 'pin' && !locals.canEdit) error(403, 'viewers can pin, not change');
 	const key = b.key as string | undefined;
 	if (key !== undefined && !KEY.test(key)) error(400, 'bad key');
 

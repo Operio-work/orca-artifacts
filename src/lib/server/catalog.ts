@@ -1,4 +1,5 @@
 import { readdir, readFile, stat } from 'node:fs/promises';
+import { BASE } from '#lib/base.js';
 import { join } from 'node:path';
 import type { CatalogItem, DashboardSpec } from '#lib/types.js';
 import { BRAND, SITE_DIR, SITE_SKIP } from './config';
@@ -51,7 +52,7 @@ async function pages(): Promise<CatalogItem[]> {
 			key: `page:${ent.name}`,
 			kind: 'page',
 			slug: ent.name,
-			href: `/${ent.name}/`,
+			href: `${BASE}/${ent.name}/`,
 			title: l(meta.title, fallback),
 			description: l(meta.description),
 			tags: meta.tags ?? [],
@@ -82,7 +83,7 @@ async function archive(): Promise<CatalogItem[]> {
 		key: `archive:${r.slug}`,
 		kind: 'archive' as const,
 		slug: r.slug,
-		href: `/archive/${r.page}`,
+		href: `${BASE}/archive/${r.page}`,
 		title: { es: r.name, en: r.name },
 		description: l({ es: r.card_es, en: r.card_en }),
 		tags: [],
@@ -97,7 +98,7 @@ function dashItem(s: DashboardSpec): CatalogItem {
 		key: `dashboard:${s.slug}`,
 		kind: 'dashboard',
 		slug: s.slug,
-		href: `/d/${s.slug}`,
+		href: `${BASE}/d/${s.slug}`,
 		title: l(s.title, s.slug),
 		description: l(s.description),
 		tags: s.tags ?? [],
