@@ -1,0 +1,94 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn-svelte/tailwind.css';
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/jetbrains-mono';
+/* Default design tokens (light). A library can add its own CSS through "theme" in orca-artifacts.config.json. */
+@import '../lib/styles/tokens.css' layer(base);
+
+/* Light only. shadcn roles mapped onto the design tokens: never literal colors below. */
+:root,
+[data-theme='light'] {
+	--background: var(--color-bg);
+	--foreground: var(--text-primary);
+	--card: var(--color-surface);
+	--card-foreground: var(--text-primary);
+	--popover: var(--color-surface);
+	--popover-foreground: var(--text-primary);
+	--primary: var(--color-orange);
+	--primary-foreground: var(--text-primary);
+	--secondary: var(--color-surface-3);
+	--secondary-foreground: var(--text-primary);
+	--muted: var(--color-surface-2);
+	--muted-foreground: var(--text-tertiary);
+	--accent: color-mix(in srgb, var(--color-orange) 12%, var(--color-surface));
+	--accent-foreground: var(--text-primary);
+	--destructive: var(--color-red-ink);
+	--border: var(--color-border);
+	--input: var(--color-border);
+	--ring: var(--color-orange);
+	--radius: 0.5rem;
+	/* chart series: brand orange for single series; validated categorical order after it */
+	--series-1: var(--color-orange);
+	--series-2: #2a78d6;
+	--series-3: #1baf7a;
+	--series-4: #e87ba4;
+	--series-5: #6250d6;
+	--series-6: #008300;
+}
+
+@theme inline {
+	--font-sans: 'Inter Variable', 'Inter', system-ui, sans-serif;
+	--font-mono: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, monospace;
+	--color-ring: var(--ring);
+	--color-input: var(--input);
+	--color-border: var(--border);
+	--color-destructive: var(--destructive);
+	--color-accent-foreground: var(--accent-foreground);
+	--color-accent: var(--accent);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-muted: var(--muted);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-secondary: var(--secondary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-primary: var(--primary);
+	--color-popover-foreground: var(--popover-foreground);
+	--color-popover: var(--popover);
+	--color-card-foreground: var(--card-foreground);
+	--color-card: var(--card);
+	--color-foreground: var(--foreground);
+	--color-background: var(--background);
+	--color-ink: var(--color-orange-ink);
+	--color-ok: var(--color-green-ink);
+	--color-bad: var(--color-red-ink);
+	--color-warn: var(--color-yellow-ink);
+	--color-dim: var(--text-dim);
+	--color-secondary-ink: var(--text-secondary);
+	--radius-sm: calc(var(--radius) * 0.75);
+	--radius-md: var(--radius);
+	--radius-lg: calc(var(--radius) * 1.5);
+	--radius-xl: calc(var(--radius) * 2);
+}
+
+@layer base {
+	* {
+		@apply border-border outline-ring/50;
+	}
+	html {
+		@apply font-sans;
+		-webkit-text-size-adjust: 100%;
+	}
+	body {
+		@apply bg-background text-foreground;
+		overflow-x: hidden;
+	}
+}
+
+@utility label-mono {
+	font-family: var(--font-mono);
+	font-size: var(--text-xs);
+	font-weight: 500;
+	letter-spacing: var(--tracking-label);
+	text-transform: uppercase;
+	color: var(--text-tertiary);
+}

@@ -1,0 +1,254 @@
+/* Default theme: Operio Unified Design Tokens v3 (light). Override per library with "theme" in orca-artifacts.config.json. */
+/* ═══════════════════════════════════════════════════════════════
+   OPERIO UNIFIED DESIGN TOKENS — v3.0
+   One token vocabulary for BOTH surfaces (dashboard + website),
+   light + dark. Plain CSS custom properties. No Tailwind, no deps.
+
+   ── Reconciliation decisions (locked) ──────────────────────────
+   • Toggle:   [data-theme="dark|light"] on <html>  (canonical)
+               html.light is ALSO honored for back-compat during migration.
+   • Naming:   --color-* / --text-* semantic family (dashboard's system
+               is the canonical base; website aliases map onto it below).
+   • Light:    COOL / zinc neutrals (technical "control-room" tone).
+   • Orange:   brand #F5A623 stays constant for fills/glows/decoration;
+               use --color-orange-ink for orange TEXT (AA-safe per theme).
+   • Type:     root stays 16px (accessibility). Dashboard opts into a
+               denser scale via [data-density="compact"] (see Typography).
+   • Radius:   sm 6 / md 8 / lg 12 / xl 16 — surfaces pick what they need.
+
+   ── Surface exceptions ──────────────────────────────────────────
+   • "No Tailwind, no deps" applies to packages/website and
+     packages/dashboard ONLY. packages/portal added shadcn-svelte +
+     Tailwind v4 + bits-ui (board decision 2026-09-25, OPE-349).
+     The portal imports this file as its single token source; shadcn's
+     CSS vars are aliased onto these tokens — no token values are copied.
+═══════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────
+   1. THEME-INDEPENDENT TOKENS
+───────────────────────────────────────────────────────────── */
+:root {
+  /* Brand orange (constant across themes) */
+  --color-orange:         #F5A623;
+  --color-orange-dim:     #C47D10;
+  --color-orange-bright:  #FFB84D;
+  --color-orange-strong:  #FF7A00;
+
+  /* Status (constant hues; AA-safe text variants set per-theme below) */
+  --color-green:   #22C55E;
+  --color-red:     #EF4444;
+  --color-yellow:  #EAB308;
+  --color-blue:    #3B82F6;
+  --color-info:    #00CFE8;
+
+  /* Typography */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', ui-monospace, monospace;
+
+  --text-xs:   0.72rem;
+  --text-sm:   0.82rem;
+  --text-base: 0.9rem;
+  --text-md:   1rem;
+  --text-lg:   1.15rem;
+  --text-xl:   1.5rem;
+  --text-2xl:  clamp(1.8rem, 3.5vw, 2.6rem);
+  --text-3xl:  clamp(2.4rem, 5vw, 3.8rem);
+
+  --tracking-label: 0.12em;   /* mono uppercase labels */
+  --tracking-brand: 0.2em;    /* wordmark */
+  --leading-body:   1.6;
+  --leading-tight:  1.2;
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius:    8px;   /* default / md */
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+
+  /* Spacing scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-8: 64px;
+
+  /* Motion */
+  --dur-fast: 0.15s;
+  --dur:      0.2s;
+  --ease:     cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Layout (website) */
+  --max-w: 1120px;
+  --nav-h: 64px;
+
+  /* Circuit / hex motif */
+  --circuit-size: 40px;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   2. DARK THEME  (default / primary)
+───────────────────────────────────────────────────────────── */
+:root,
+[data-theme="dark"] {
+  --color-bg:         #0A0A0A;
+  --color-surface:    #111111;
+  --color-surface-2:  #161616;
+  --color-surface-3:  #1C1C1C;
+  --color-border:     #1E1E1E;
+  --color-border-dim: #141414;
+
+  --text-primary:     #F0F0F0;
+  --text-secondary:   #999999;
+  --text-tertiary:    #666666;
+  --text-dim:         #444444;
+
+  /* Orange text safe on dark = brand orange itself */
+  --color-orange-ink: #F5A623;
+
+  /* Status text on dark (full-saturation reads fine) */
+  --color-green-ink:  #22C55E;
+  --color-red-ink:    #EF4444;
+  --color-yellow-ink: #EAB308;
+
+  --glow-orange:     rgba(245, 166, 35, 0.40);
+  --glow-orange-sm:  rgba(245, 166, 35, 0.20);
+  --glow-orange-lg:  rgba(245, 166, 35, 0.60);
+
+  --circuit-line: #141414;
+
+  --shadow-sm:   0 1px 2px rgba(0,0,0,0.4);
+  --shadow-card: 0 0 20px rgba(0,0,0,0.5);
+  --shadow-lg:   0 8px 32px rgba(0,0,0,0.6);
+
+  /* Nav (website) */
+  --nav-scrolled-bg: rgba(10,10,10,0.92);
+  --nav-mobile-bg:   rgba(10,10,10,0.97);
+  --nav-hover-bg:    rgba(255,255,255,0.04);
+
+  /* SVG illustration tokens (website) */
+  --svg-bg0: #0d0d0d; --svg-bg1: #111111; --svg-bg2: #161616;
+  --svg-edge0: #1a1a1a; --svg-edge1: #1e1e1e; --svg-edge2: #222222; --svg-edge3: #2e2e2e;
+  --svg-text-dim: #666666;
+  --svg-hand-min: rgba(255,255,255,0.7);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   3. LIGHT THEME  (cool / zinc)
+   Honors both the canonical attribute and the legacy html.light class.
+───────────────────────────────────────────────────────────── */
+[data-theme="light"],
+html.light {
+  --color-bg:         #F4F4F5;
+  --color-surface:    #FFFFFF;
+  --color-surface-2:  #FAFAFB;
+  --color-surface-3:  #F4F4F5;
+  --color-border:     #E4E4E7;
+  --color-border-dim: #EDEDEF;
+
+  --text-primary:     #18181B;
+  --text-secondary:   #52525B;
+  --text-tertiary:    #71717A;
+  --text-dim:         #A1A1AA;
+
+  /* AA-safe orange text on light backgrounds (~5.2:1 on #FFF) */
+  --color-orange-ink: #9A6700;
+
+  /* AA-safe status text on light */
+  --color-green-ink:  #1A7F4B;
+  --color-red-ink:    #C0392B;
+  --color-yellow-ink: #8A6D0F;
+
+  /* Softer glows in light mode */
+  --glow-orange:     rgba(245, 166, 35, 0.20);
+  --glow-orange-sm:  rgba(245, 166, 35, 0.10);
+  --glow-orange-lg:  rgba(245, 166, 35, 0.30);
+
+  --circuit-line: #E4E4E7;
+
+  --shadow-sm:   0 1px 2px rgba(0,0,0,0.06);
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
+  --shadow-lg:   0 12px 32px rgba(0,0,0,0.10);
+
+  /* Nav (website) */
+  --nav-scrolled-bg: rgba(244,244,245,0.95);
+  --nav-mobile-bg:   rgba(244,244,245,0.98);
+  --nav-hover-bg:    rgba(0,0,0,0.06);
+
+  /* SVG illustration tokens (website) */
+  --svg-bg0: #FFFFFF; --svg-bg1: #FAFAFB; --svg-bg2: #F0F0F2;
+  --svg-edge0: #E4E4E7; --svg-edge1: #D4D4D8; --svg-edge2: #DEDEE1; --svg-edge3: #C8C8CC;
+  --svg-text-dim: #888888;
+  --svg-hand-min: rgba(0,0,0,0.35);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   4. BACK-COMPAT ALIASES  (website "v1.0" names → canonical)
+   Lets packages/website keep its existing var() references while
+   migrating. These follow the active theme automatically.
+   Delete a row once the codebase no longer references that name.
+───────────────────────────────────────────────────────────── */
+:root {
+  --bg:            var(--color-bg);
+  --surface:       var(--color-surface);
+  --surface-2:     var(--color-surface-2);
+  --border:        var(--color-border);
+
+  --orange:        var(--color-orange);
+  --orange-dim:    var(--color-orange-dim);
+  --orange-str:    var(--color-orange-strong);
+  --orange-bright: var(--color-orange-bright);
+  --glow:          var(--glow-orange);
+  --glow-sm:       var(--glow-orange-sm);
+
+  --text:          var(--text-primary);
+  --text-2:        var(--text-secondary);
+  --text-3:        var(--text-dim);
+  --muted:         var(--text-tertiary);
+
+  --green:         var(--color-green);
+  --info:          var(--color-info);
+
+  --font:          var(--font-sans);
+  --mono:          var(--font-mono);
+  /* NOTE: website's --radius was 10px and --radius-lg 16px.
+     Canonical --radius is 8px / --radius-lg 12px / --radius-xl 16px.
+     If you want the website's slightly rounder look, override locally:
+       .website-scope { --radius: 10px; --radius-lg: var(--radius-xl); }  */
+}
+
+/* ─────────────────────────────────────────────────────────────
+   5. DENSITY (dashboard opts into a tighter UI without shrinking
+   the root font — keeps rem-based accessibility intact)
+───────────────────────────────────────────────────────────── */
+[data-density="compact"] {
+  --text-base: 0.82rem;
+  --text-md:   0.9rem;
+  --text-lg:   1rem;
+  --text-xl:   1.3rem;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   6. GLOBAL BASELINE
+───────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-bg);
+  color: var(--text-primary);
+  line-height: var(--leading-body);
+  min-height: 100vh;
+  transition: background var(--dur), color var(--dur);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- ORCA by Operio, "Node Fin": the three Operio nodes form an orca fin above the waterline.
+       The white tip node is the agent waiting for approval; the half ring echoes the Operio circle. -->
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#181B20"/><stop offset="1" stop-color="#08090B"/></linearGradient></defs>
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <g id="art">
+    <path d="M106 300A150 150 0 0 0 406 300" fill="none" stroke="#F5A623" stroke-opacity=".28" stroke-width="22" stroke-linecap="round"/>
+    <path d="M170 300Q262 236 312 96L350 300Z" fill="#F5A623" fill-opacity=".16"/>
+    <path d="M170 300Q262 236 312 96L350 300Z" fill="none" stroke="#F5A623" stroke-width="22" stroke-linejoin="round"/>
+    <path d="M84 300H428" stroke="#F0F0F0" stroke-width="16" stroke-linecap="round"/>
+    <circle cx="170" cy="300" r="32" fill="#F5A623"/><circle cx="350" cy="300" r="32" fill="#F5A623"/><circle cx="312" cy="96" r="34" fill="#F0F0F0"/>
+  </g>
+</svg>

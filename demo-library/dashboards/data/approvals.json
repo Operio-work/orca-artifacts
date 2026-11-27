@@ -1,0 +1,341 @@
+{
+ "updated": "2026-11-26T18:00:00Z",
+ "items": [
+  {
+   "date": "2026-10-01",
+   "client": "Harbor Street Bistro",
+   "task": "Supplier reorder email",
+   "agent": "Writer",
+   "status": "sent"
+  },
+  {
+   "date": "2026-10-01",
+   "client": "Harbor Street Bistro",
+   "task": "Holiday hours notice",
+   "agent": "Writer",
+   "status": "approved"
+  },
+  {
+   "date": "2026-10-03",
+   "client": "Brightside Dental",
+   "task": "Review reply",
+   "agent": "Writer",
+   "status": "sent"
+  },
+  {
+   "date": "2026-10-05",
+   "client": "Harbor Street Bistro",
+   "task": "Weekend menu post",
+   "agent": "Scheduler",
+   "status": "sent"
+  },
+  {
+   "date": "2026-10-06",
+   "client": "Brightside Dental",
+   "task": "Review reply",
+   "agent": "Researcher",
+   "status": "sent"
+  },
+  {
+   "date": "2026-10-07",
+   "client": "Harbor Street Bistro",
+   "task": "Review reply",
+   "agent": "Researcher",
+   "status": "approved"
+  },
+  {
+   "date": "2026-10-09",
+   "client": "Harbor Street Bistro",
+   "task": "Weekend menu post",
+   "agent": "Communicator",
+   "status": "sent"
+  },
+  {
+   "date": "2026-10-10",
+   "client": "Harbor Street Bistro",
+   "task": "Supplier reorder email",
+   "agent": "Researcher",
+   "status": "waiting"
+  },
+  {
+   "date": "2026-10-10",
+   "client": "Harbor Street Bistro",
+   "task": "Catering quote",
+   "agent": "Writer",
+   "status": "waiting"
+  },
+  {
+   "date": "2026-10-11",
+   "client": "Brightside Dental",
+   "task": "Recall list",
+   "agent": "Communicator",
+   "status": "changes"
+  },
+  {
+   "date": "2026-10-12",
+   "client": "Harbor Street Bistro",
+   "task": "Catering quote",
+   "agent": "Writer",
+   "status": "waiting"
+  },
+  {
+   "date": "2026-10-12",
+   "client": "Brightside Dental",
+   "task": "Appointment reminders",
+   "agent": "Communicator",
+   "status": "sent"
+  },
+  {
+   "date": "2026-10-14",
+   "client": "Harbor Street Bistro",
+   "task": "Weekend menu post",
+   "agent": "Scheduler",
+   "status": "sent"
+  },
+  {
+   "date": "2026-10-20",
+   "client": "Harbor Street Bistro",
+   "task": "Catering quote",
+   "agent": "Communicator",
+   "status": "changes"
+  },
+  {
+   "date": "2026-10-21",
+   "client": "Harbor Street Bistro",
+   "task": "Weekend menu post",
+   "agent": "Scheduler",
+   "status": "approved"
+  },
+  {
+   "date": "2026-10-21",
+   "client": "Brightside Dental",
+   "task": "Appointment reminders",
+   "agent": "Scheduler",
+   "status": "waiting"
+  },
+  {
+   "date": "2026-10-22",
+   "client": "Brightside Dental",
+   "task": "Insurance letter",
+   "agent": "Communicator",
+   "status": "approved"
+  },
+  {
+   "date": "2026-10-24",
+   "client": "Brightside Dental",
+   "task": "New-patient welcome",
+   "agent": "Researcher",
+   "status": "waiting"
+  },
+  {
+   "date": "2026-10-26",
+   "client": "Harbor Street Bistro",
+   "task": "Review reply",
+   "agent": "Researcher",
+   "status": "sent"
+  },
+  {
+   "date": "2026-10-26",
+   "client": "Harbor Street Bistro",
+   "task": "Review reply",
+   "agent": "Writer",
+   "status": "approved"
+  },
+  {
+   "date": "2026-10-27",
+   "client": "Harbor Street Bistro",
+   "task": "Weekend menu post",
+   "agent": "Communicator",
+   "status": "sent"
+  },
+  {
+   "date": "2026-10-27",
+   "client": "Brightside Dental",
+   "task": "New-patient welcome",
+   "agent": "Writer",
+   "status": "sent"
+  },
+  {
+   "date": "2026-10-27",
+   "client": "Harbor Street Bistro",
+   "task": "Weekend menu post",
+   "agent": "Scheduler",
+   "status": "sent"
+  },
+  {
+   "date": "2026-10-27",
+   "client": "Brightside Dental",
+   "task": "Appointment reminders",
+   "agent": "Researcher",
+   "status": "sent"
+  },
+  {
+   "date": "2026-10-27",
+   "client": "Brightside Dental",
+   "task": "Recall list",
+   "agent": "Communicator",
+   "status": "sent"
+  },
+  {
+   "date": "2026-10-28",
+   "client": "Harbor Street Bistro",
+   "task": "Holiday hours notice",
+   "agent": "Researcher",
+   "status": "approved"
+  },
+  {
+   "date": "2026-10-30",
+   "client": "Brightside Dental",
+   "task": "Review reply",
+   "agent": "Writer",
+   "status": "sent"
+  },
+  {
+   "date": "2026-10-30",
+   "client": "Brightside Dental",
+   "task": "Insurance letter",
+   "agent": "Scheduler",
+   "status": "sent"
+  },
+  {
+   "date": "2026-11-02",
+   "client": "Harbor Street Bistro",
+   "task": "Catering quote",
+   "agent": "Scheduler",
+   "status": "sent"
+  },
+  {
+   "date": "2026-11-02",
+   "client": "Harbor Street Bistro",
+   "task": "Review reply",
+   "agent": "Writer",
+   "status": "sent"
+  },
+  {
+   "date": "2026-11-02",
+   "client": "Brightside Dental",
+   "task": "Insurance letter",
+   "agent": "Scheduler",
+   "status": "sent"
+  },
+  {
+   "date": "2026-11-05",
+   "client": "Brightside Dental",
+   "task": "New-patient welcome",
+   "agent": "Scheduler",
+   "status": "approved"
+  },
+  {
+   "date": "2026-11-08",
+   "client": "Harbor Street Bistro",
+   "task": "Review reply",
+   "agent": "Writer",
+   "status": "changes"
+  },
+  {
+   "date": "2026-11-09",
+   "client": "Brightside Dental",
+   "task": "Appointment reminders",
+   "agent": "Writer",
+   "status": "waiting"
+  },
+  {
+   "date": "2026-11-10",
+   "client": "Harbor Street Bistro",
+   "task": "Review reply",
+   "agent": "Communicator",
+   "status": "sent"
+  },
+  {
+   "date": "2026-11-10",
+   "client": "Harbor Street Bistro",
+   "task": "Catering quote",
+   "agent": "Scheduler",
+   "status": "sent"
+  },
+  {
+   "date": "2026-11-11",
+   "client": "Harbor Street Bistro",
+   "task": "Holiday hours notice",
+   "agent": "Communicator",
+   "status": "waiting"
+  },
+  {
+   "date": "2026-11-11",
+   "client": "Brightside Dental",
+   "task": "Insurance letter",
+   "agent": "Scheduler",
+   "status": "sent"
+  },
+  {
+   "date": "2026-11-12",
+   "client": "Harbor Street Bistro",
+   "task": "Supplier reorder email",
+   "agent": "Communicator",
+   "status": "approved"
+  },
+  {
+   "date": "2026-11-14",
+   "client": "Brightside Dental",
+   "task": "New-patient welcome",
+   "agent": "Scheduler",
+   "status": "changes"
+  },
+  {
+   "date": "2026-11-15",
+   "client": "Brightside Dental",
+   "task": "Recall list",
+   "agent": "Writer",
+   "status": "approved"
+  },
+  {
+   "date": "2026-11-19",
+   "client": "Harbor Street Bistro",
+   "task": "Supplier reorder email",
+   "agent": "Researcher",
+   "status": "approved"
+  },
+  {
+   "date": "2026-11-22",
+   "client": "Brightside Dental",
+   "task": "Recall list",
+   "agent": "Writer",
+   "status": "changes"
+  },
+  {
+   "date": "2026-11-23",
+   "client": "Harbor Street Bistro",
+   "task": "Holiday hours notice",
+   "agent": "Writer",
+   "status": "sent"
+  },
+  {
+   "date": "2026-11-23",
+   "client": "Brightside Dental",
+   "task": "Insurance letter",
+   "agent": "Scheduler",
+   "status": "approved"
+  },
+  {
+   "date": "2026-11-25",
+   "client": "Brightside Dental",
+   "task": "New-patient welcome",
+   "agent": "Scheduler",
+   "status": "approved"
+  },
+  {
+   "date": "2026-11-26",
+   "client": "Brightside Dental",
+   "task": "Insurance letter",
+   "agent": "Scheduler",
+   "status": "changes"
+  },
+  {
+   "date": "2026-11-26",
+   "client": "Harbor Street Bistro",
+   "task": "Supplier reorder email",
+   "agent": "Writer",
+   "status": "waiting"
+  }
+ ]
+}

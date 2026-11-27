@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "slug": "reviews",
+  "title": { "es": "Reseñas y respuestas", "en": "Reviews and replies" },
+  "description": {
+    "es": "Reseñas de los dos clientes demo, cuántas ya tienen respuesta aprobada y el tiempo ahorrado.",
+    "en": "Reviews for the two demo clients, how many already have an approved reply, and the time saved."
+  },
+  "tags": ["reviews", "demo"],
+  "range": true,
+  "sources": {
+    "reviews": { "file": "dashboards/data/reviews.json", "path": "items", "dateField": "date" }
+  },
+  "filters": [
+    { "source": "reviews", "field": "client", "label": { "es": "Cliente", "en": "Client" } },
+    { "source": "reviews", "field": "source", "label": { "es": "Origen", "en": "Source" } }
+  ],
+  "labels": {
+    "status": {
+      "replied": { "es": "Respondida", "en": "Replied" },
+      "approved": { "es": "Aprobada", "en": "Approved" },
+      "draft": { "es": "Borrador", "en": "Draft" }
+    }
+  },
+  "widgets": [
+    { "type": "stat", "title": { "es": "Reseñas", "en": "Reviews" }, "source": "reviews", "agg": "count" },
+    { "type": "stat", "title": { "es": "Estrellas promedio", "en": "Average stars" }, "source": "reviews", "agg": "avg", "field": "stars" },
+    { "type": "stat", "title": { "es": "Borradores por aprobar", "en": "Drafts to approve" }, "source": "reviews", "agg": "count", "where": { "status": "draft" } },
+    { "type": "stat", "title": { "es": "Minutos ahorrados", "en": "Minutes saved" }, "source": "reviews", "agg": "sum", "field": "minutes_saved" },
+    { "type": "bar", "title": { "es": "Por estado", "en": "By status" }, "source": "reviews", "groupBy": "status", "agg": "count", "span": 2 },
+    { "type": "bar", "title": { "es": "Por estrellas", "en": "By stars" }, "source": "reviews", "groupBy": "stars", "agg": "count", "span": 2 },
+    { "type": "line", "title": { "es": "Reseñas por semana", "en": "Reviews per week" }, "source": "reviews", "x": "date", "bucket": "week", "agg": "count", "series": "client", "span": 4 },
+    {
+      "type": "table", "title": { "es": "Reseñas", "en": "Reviews" }, "source": "reviews", "sort": "-date", "limit": 50, "span": 4,
+      "columns": [
+        { "field": "date", "label": { "es": "Fecha", "en": "Date" }, "format": "date" },
+        { "field": "client", "label": { "es": "Cliente", "en": "Client" } },
+        { "field": "source", "label": { "es": "Origen", "en": "Source" } },
+        { "field": "stars", "label": { "es": "Estrellas", "en": "Stars" }, "format": "number" },
+        { "field": "status", "label": { "es": "Estado", "en": "Status" }, "format": "pill" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "title": { "es": "Harbor Street Bistro · reporte semanal", "en": "Harbor Street Bistro · weekly report" },
+  "description": {
+    "es": "Página viva de ejemplo: lo que los agentes hicieron esta semana y lo que espera tu aprobación.",
+    "en": "Sample live page: what the agents did this week and what is waiting for your approval."
+  },
+  "tags": ["report", "demo"]
+}

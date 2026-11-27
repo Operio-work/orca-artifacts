@@ -1,0 +1,13 @@
+{
+  "updated": "2026-11-26T18:00:00Z",
+  "week_es": "Semana del 23 al 29 de noviembre",
+  "week_en": "Week of November 23–29",
+  "minutes_saved": 214,
+  "items": [
+    { "date": "2026-11-23", "item_es": "Publicación del menú de fin de semana", "item_en": "Weekend menu post", "status": "sent" },
+    { "date": "2026-11-24", "item_es": "12 respuestas a reseñas", "item_en": "12 review replies", "status": "sent" },
+    { "date": "2026-11-24", "item_es": "Cotización de catering para 40 personas", "item_en": "Catering quote for 40 guests", "status": "approved" },
+    { "date": "2026-11-25", "item_es": "Pedido semanal al proveedor de mariscos", "item_en": "Weekly seafood supplier order", "status": "waiting" },
+    { "date": "2026-11-26", "item_es": "Aviso de horario de días festivos", "item_en": "Holiday hours notice", "status": "waiting" }
+  ]
+}

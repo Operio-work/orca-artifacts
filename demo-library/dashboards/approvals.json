@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "slug": "approvals",
+  "title": { "es": "Trabajo de los agentes y aprobaciones", "en": "Agent work and approvals" },
+  "description": {
+    "es": "Lo que prepararon los agentes para cada cliente y qué sigue esperando tu aprobación.",
+    "en": "What the agents prepared for each client and what is still waiting for your approval."
+  },
+  "tags": ["approvals", "demo"],
+  "sources": {
+    "work": { "file": "dashboards/data/approvals.json", "path": "items", "dateField": "date" }
+  },
+  "filters": [
+    { "source": "work", "field": "client", "label": { "es": "Cliente", "en": "Client" } },
+    { "source": "work", "field": "agent", "label": { "es": "Agente", "en": "Agent" } }
+  ],
+  "labels": {
+    "status": {
+      "waiting": { "es": "Esperando", "en": "Waiting" },
+      "approved": { "es": "Aprobado", "en": "Approved" },
+      "sent": { "es": "Enviado", "en": "Sent" },
+      "changes": { "es": "Con cambios", "en": "Changes asked" }
+    }
+  },
+  "widgets": [
+    { "type": "stat", "title": { "es": "Tareas", "en": "Tasks" }, "source": "work", "agg": "count" },
+    { "type": "stat", "title": { "es": "Esperando aprobación", "en": "Waiting for approval" }, "source": "work", "agg": "count", "where": { "status": "waiting" } },
+    { "type": "stat", "title": { "es": "Enviadas", "en": "Sent" }, "source": "work", "agg": "count", "where": { "status": "sent" } },
+    { "type": "stat", "title": { "es": "Agentes", "en": "Agents" }, "source": "work", "agg": "distinct", "field": "agent" },
+    { "type": "bar", "title": { "es": "Por agente", "en": "By agent" }, "source": "work", "groupBy": "agent", "agg": "count", "span": 2 },
+    { "type": "bar", "title": { "es": "Por estado", "en": "By status" }, "source": "work", "groupBy": "status", "agg": "count", "span": 2 },
+    {
+      "type": "table", "title": { "es": "Tareas", "en": "Tasks" }, "source": "work", "sort": "-date", "span": 4,
+      "columns": [
+        { "field": "date", "label": { "es": "Fecha", "en": "Date" }, "format": "date" },
+        { "field": "client", "label": { "es": "Cliente", "en": "Client" } },
+        { "field": "task", "label": { "es": "Tarea", "en": "Task" } },
+        { "field": "agent", "label": { "es": "Agente", "en": "Agent" } },
+        { "field": "status", "label": { "es": "Estado", "en": "Status" }, "format": "pill" }
+      ]
+    }
+  ]
+}

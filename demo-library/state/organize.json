@@ -1,0 +1,12 @@
+{
+  "collections": [
+    { "id": "harbor", "name": "Harbor Street Bistro" },
+    { "id": "brightside", "name": "Brightside Dental" },
+    { "id": "ops", "name": "Operations" }
+  ],
+  "items": {
+    "dashboard:reviews": { "collection": "ops" },
+    "dashboard:approvals": { "collection": "ops" },
+    "page:weekly-report": { "collection": "harbor" }
+  }
+}

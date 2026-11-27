@@ -1,0 +1,1125 @@
+{
+ "updated": "2026-11-26T18:00:00Z",
+ "items": [
+  {
+   "date": "2026-09-01",
+   "client": "Harbor Street Bistro",
+   "stars": 5,
+   "source": "Facebook",
+   "status": "draft",
+   "minutes_saved": 8
+  },
+  {
+   "date": "2026-09-01",
+   "client": "Brightside Dental",
+   "stars": 4,
+   "source": "Google",
+   "status": "replied",
+   "minutes_saved": 8
+  },
+  {
+   "date": "2026-09-02",
+   "client": "Harbor Street Bistro",
+   "stars": 4,
+   "source": "Google",
+   "status": "replied",
+   "minutes_saved": 8
+  },
+  {
+   "date": "2026-09-03",
+   "client": "Brightside Dental",
+   "stars": 5,
+   "source": "Google",
+   "status": "replied",
+   "minutes_saved": 8
+  },
+  {
+   "date": "2026-09-05",
+   "client": "Brightside Dental",
+   "stars": 5,
+   "source": "Yelp",
+   "status": "replied",
+   "minutes_saved": 8
+  },
+  {
+   "date": "2026-09-05",
+   "client": "Brightside Dental",
+   "stars": 4,
+   "source": "Facebook",
+   "status": "replied",
+   "minutes_saved": 5
+  },
+  {
+   "date": "2026-09-06",
+   "client": "Harbor Street Bistro",
+   "stars": 5,
+   "source": "Yelp",
+   "status": "replied",
+   "minutes_saved": 6
+  },
+  {
+   "date": "2026-09-07",
+   "client": "Harbor Street Bistro",
+   "stars": 5,
+   "source": "Facebook",
+   "status": "replied",
+   "minutes_saved": 4
+  },
+  {
+   "date": "2026-09-08",
+   "client": "Harbor Street Bistro",
+   "stars": 5,
+   "source": "Google",
+   "status": "replied",
+   "minutes_saved": 4
+  },
+  {
+   "date": "2026-09-08",
+   "client": "Brightside Dental",
+   "stars": 5,
+   "source": "Google",
+   "status": "draft",
+   "minutes_saved": 5
+  },
+  {
+   "date": "2026-09-08",
+   "client": "Harbor Street Bistro",
+   "stars": 5,
+   "source": "Yelp",
+   "status": "draft",
+   "minutes_saved": 4
+  },
+  {
+   "date": "2026-09-09",
+   "client": "Brightside Dental",
+   "stars": 5,
+   "source": "Google",
+   "status": "draft",
+   "minutes_saved": 6
+  },
+  {
+   "date": "2026-09-10",
+   "client": "Brightside Dental",
+   "stars": 5,
+   "source": "Facebook",
+   "status": "replied",
+   "minutes_saved": 6
+  },
+  {
+   "date": "2026-09-11",
+   "client": "Harbor Street Bistro",
+   "stars": 5,
+   "source": "Yelp",
+   "status": "replied",
+   "minutes_saved": 8
+  },
+  {
+   "date": "2026-09-11",
+   "client": "Brightside Dental",
+   "stars": 5,
+   "source": "Google",
+   "status": "draft",
+   "minutes_saved": 6
+  },
+  {
+   "date": "2026-09-11",
+   "client": "Harbor Street Bistro",
+   "stars": 5,
+   "source": "Facebook",
+   "status": "draft",
+   "minutes_saved": 4
+  },
+  {
+   "date": "2026-09-11",
+   "client": "Brightside Dental",
+   "stars": 5,
+   "source": "Google",
+   "status": "replied",
+   "minutes_saved": 4
+  },
+  {
+   "date": "2026-09-11",
+   "client": "Harbor Street Bistro",
+   "stars": 2,
+   "source": "Google",
+   "status": "replied",
+   "minutes_saved": 6
+  },
+  {
+   "date": "2026-09-11",
+   "client": "Harbor Street Bistro",
+   "stars": 5,
+   "source": "Google",
+   "status": "replied",
+   "minutes_saved": 6
+  },
+  {
+   "date": "2026-09-11",
+   "client": "Harbor Street Bistro",
+   "stars": 5,
+   "source": "Facebook",
+   "status": "replied",
+   "minutes_saved": 4
+  },
+  {
+   "date": "2026-09-12",
+   "client": "Brightside Dental",
+   "stars": 5,
+   "source": "Google",
+   "status": "replied",
+   "minutes_saved": 6
+  },
+  {
+   "date": "2026-09-12",
+   "client": "Brightside Dental",
+   "stars": 3,
+   "source": "Google",
+   "status": "replied",
+   "minutes_saved": 8
+  },
+  {
+   "date": "2026-09-12",
+   "client": "Brightside Dental",
+   "stars": 2,
+   "source": "Facebook",
+   "status": "replied",
+   "minutes_saved": 8
+  },
+  {
+   "date": "2026-09-12",
+   "client": "Harbor Street Bistro",
+   "stars": 4,
+   "source": "Facebook",
+   "status": "replied",
+   "minutes_saved": 5
+  },
+  {
+   "date": "2026-09-13",
+   "client": "Harbor Street Bistro",
+   "stars": 4,
+   "source": "Facebook",
+   "status": "replied",
+   "minutes_saved": 8
+  },
+  {
+   "date": "2026-09-13",
+   "client": "Brightside Dental",
+   "stars": 3,
+   "source": "Google",
+   "status": "replied",
+   "minutes_saved": 5
+  },
+  {
+   "date": "2026-09-14",
+   "client": "Harbor Street Bistro",
+   "stars": 5,
+   "source": "Facebook",
+   "status": "replied",
+   "minutes_saved": 4
+  },
+  {
+   "date": "2026-09-15",
+   "client": "Brightside Dental",
+   "stars": 1,
+   "source": "Facebook",
+   "status": "replied",
+   "minutes_saved": 6
+  },
+  {
+   "date": "2026-09-17",
+   "client": "Harbor Street Bistro",
+   "stars": 5,
+   "source": "Google",
+   "status": "draft",
+   "minutes_saved": 8
+  },
+  {
+   "date": "2026-09-17",
+   "client": "Brightside Dental",
+   "stars": 3,
+   "source": "Yelp",
+   "status": "replied",
+   "minutes_saved": 8
+  },
+  {
+   "date": "2026-09-17",
+   "client": "Brightside Dental",
+   "stars": 5,
+   "source": "Google",
+   "status": "replied",
+   "minutes_saved": 4
+  },
+  {
+   "date": "2026-09-19",
+   "client": "Brightside Dental",
+   "stars": 1,
+   "source": "Yelp",
+   "status": "replied",
+   "minutes_saved": 4
+  },
+  {
+   "date": "2026-09-19",
+   "client": "Brightside Dental",
+   "stars": 5,
+   "source": "Yelp",
+   "status": "replied",
+   "minutes_saved": 4
+  },
+  {
+   "date": "2026-09-20",
+   "client": "Harbor Street Bistro",
+   "stars": 5,
+   "source": "Google",
+   "status": "replied",
+   "minutes_saved": 4
+  },
+  {
+   "date": "2026-09-20",
+   "client": "Brightside Dental",
+   "stars": 5,
+   "source": "Facebook",
+   "status": "draft",
+   "minutes_saved": 5
+  },
+  {
+   "date": "2026-09-20",
+   "client": "Brightside Dental",
+   "stars": 4,
+   "source": "Google",
+   "status": "replied",
+   "minutes_saved": 5
+  },
+  {
+   "date": "2026-09-21",
+   "client": "Harbor Street Bistro",
+   "stars": 5,
+   "source": "Yelp",
+   "status": "draft",
+   "minutes_saved": 5
+  },
+  {
+   "date": "2026-09-21",
+   "client": "Harbor Street Bistro",
+   "stars": 5,
+   "source": "Yelp",
+   "status": "approved",
+   "minutes_saved": 5
+  },
+  {
+   "date": "2026-09-21",
+   "client": "Harbor Street Bistro",
+   "stars": 2,
+   "source": "Facebook",
+   "status": "replied",
+   "minutes_saved": 6
+  },
+  {
+   "date": "2026-09-22",
+   "client": "Brightside Dental",
+   "stars": 5,
+   "source": "Google",
+   "status": "replied",
+   "minutes_saved": 8
+  },
+  {
+   "date": "2026-09-22",
+   "client": "Harbor Street Bistro",
+   "stars": 5,
+   "source": "Facebook",
+   "status": "replied",
+   "minutes_saved": 5
+  },
+  {
+   "date": "2026-09-23",
+   "client": "Harbor Street Bistro",
+   "stars": 5,
+   "source": "Google",
+   "status": "approved",
+   "minutes_saved": 6
+  },
+  {
+   "date": "2026-09-24",
+   "client": "Harbor Street Bistro",
+   "stars": 5,
+   "source": "Facebook",
+   "status": "replied",
+   "minutes_saved": 6
+  },
+  {
+   "date": "2026-09-24",
+   "client": "Harbor Street Bistro",
+   "stars": 2,
+   "source": "Google",
+   "status": "replied",
+   "minutes_saved": 6
+  },
+  {
+   "date": "2026-09-25",
+   "client": "Brightside Dental",
+   "stars": 5,
+   "source": "Facebook",
+   "status": "replied",
+   "minutes_saved": 4
+  },
+  {
+   "date": "2026-09-26",
+   "client": "Brightside Dental",
+   "stars": 3,
+   "source": "Yelp",
+   "status": "replied",
+   "minutes_saved": 4
+  },
+  {
+   "date": "2026-09-26",
+   "client": "Brightside Dental",
+   "stars": 4,
+   "source": "Facebook",
+   "status": "replied",
+   "minutes_saved": 5
+  },
+  {
+   "date": "2026-09-28",
+   "client": "Harbor Street Bistro",
+   "stars": 5,
+   "source": "Google",
+   "status": "replied",
+   "minutes_saved": 6
+  },
+  {
+   "date": "2026-09-28",
+   "client": "Brightside Dental",
+   "stars": 5,
+   "source": "Facebook",
+   "status": "replied",
+   "minutes_saved": 8
+  },
+  {
+   "date": "2026-09-29",
+   "client": "Harbor Street Bistro",
+   "stars": 4,
+   "source": "Google",
+   "status": "replied",
+   "minutes_saved": 4
+  },
+  {
+   "date": "2026-09-29",
+   "client": "Harbor Street Bistro",
+   "stars": 5,
+   "source": "Facebook",
+   "status": "replied",
+   "minutes_saved": 6
+  },
+  {
+   "date": "2026-09-30",
+   "client": "Brightside Dental",
+   "stars": 5,
+   "source": "Facebook",
+   "status": "replied",
+   "minutes_saved": 6
+  },
+  {
+   "date": "2026-09-30",
+   "client": "Harbor Street Bistro",
+   "stars": 5,
+   "source": "Facebook",
+   "status": "draft",
+   "minutes_saved": 6
+  },
+  {
+   "date": "2026-10-02",
+   "client": "Brightside Dental",
+   "stars": 5,
+   "source": "Facebook",
+   "status": "approved",
+   "minutes_saved": 8
+  },
+  {
+   "date": "2026-10-02",
+   "client": "Harbor Street Bistro",
+   "stars": 5,
+   "source": "Yelp",
+   "status": "replied",
+   "minutes_saved": 5
+  },
+  {
+   "date": "2026-10-02",
+   "client": "Harbor Street Bistro",
+   "stars": 5,
+   "source": "Google",
+   "status": "replied",
+   "minutes_saved": 8
+  },
+  {
+   "date": "2026-10-03",
+   "client": "Harbor Street Bistro",
+   "stars": 4,
+   "source": "Google",
+   "status": "draft",
+   "minutes_saved": 8
+  },
+  {
+   "date": "2026-10-03",
+   "client": "Harbor Street Bistro",
+   "stars": 4,
+   "source": "Yelp",
+   "status": "draft",
+   "minutes_saved": 6
+  },
+  {
+   "date": "2026-10-04",
+   "client": "Brightside Dental",
+   "stars": 3,
+   "source": "Yelp",
+   "status": "replied",
+   "minutes_saved": 8
+  },
+  {
+   "date": "2026-10-04",
+   "client": "Brightside Dental",
+   "stars": 1,
+   "source": "Yelp",
+   "status": "draft",
+   "minutes_saved": 5
+  },
+  {
+   "date": "2026-10-04",
+   "client": "Harbor Street Bistro",
+   "stars": 5,
+   "source": "Google",
+   "status": "replied",
+   "minutes_saved": 4
+  },
+  {
+   "date": "2026-10-04",
+   "client": "Brightside Dental",
+   "stars": 5,
+   "source": "Google",
+   "status": "replied",
+   "minutes_saved": 5
+  },
+  {
+   "date": "2026-10-05",
+   "client": "Brightside Dental",
+   "stars": 1,
+   "source": "Yelp",
+   "status": "replied",
+   "minutes_saved": 6
+  },
+  {
+   "date": "2026-10-06",
+   "client": "Brightside Dental",
+   "stars": 5,
+   "source": "Yelp",
+   "status": "replied",
+   "minutes_saved": 8
+  },
+  {
+   "date": "2026-10-06",
+   "client": "Brightside Dental",
+   "stars": 5,
+   "source": "Google",
+   "status": "approved",
+   "minutes_saved": 4
+  },
+  {
+   "date": "2026-10-07",
+   "client": "Harbor Street Bistro",
+   "stars": 4,
+   "source": "Facebook",
+   "status": "replied",
+   "minutes_saved": 4
+  },
+  {
+   "date": "2026-10-08",
+   "client": "Harbor Street Bistro",
+   "stars": 5,
+   "source": "Facebook",
+   "status": "replied",
+   "minutes_saved": 4
+  },
+  {
+   "date": "2026-10-08",
+   "client": "Brightside Dental",
+   "stars": 5,
+   "source": "Google",
+   "status": "replied",
+   "minutes_saved": 6
+  },
+  {
+   "date": "2026-10-10",
+   "client": "Harbor Street Bistro",
+   "stars": 5,
+   "source": "Facebook",
+   "status": "replied",
+   "minutes_saved": 8
+  },
+  {
+   "date": "2026-10-10",
+   "client": "Brightside Dental",
+   "stars": 3,
+   "source": "Facebook",
+   "status": "draft",
+   "minutes_saved": 5
+  },
+  {
+   "date": "2026-10-11",
+   "client": "Brightside Dental",
+   "stars": 4,
+   "source": "Yelp",
+   "status": "replied",
+   "minutes_saved": 5
+  },
+  {
+   "date": "2026-10-11",
+   "client": "Harbor Street Bistro",
+   "stars": 5,
+   "source": "Google",
+   "status": "replied",
+   "minutes_saved": 4
+  },
+  {
+   "date": "2026-10-12",
+   "client": "Harbor Street Bistro",
+   "stars": 5,
+   "source": "Google",
+   "status": "replied",
+   "minutes_saved": 6
+  },
+  {
+   "date": "2026-10-12",
+   "client": "Brightside Dental",
+   "stars": 5,
+   "source": "Google",
+   "status": "approved",
+   "minutes_saved": 4
+  },
+  {
+   "date": "2026-10-12",
+   "client": "Brightside Dental",
+   "stars": 3,
+   "source": "Google",
+   "status": "replied",
+   "minutes_saved": 4
+  },
+  {
+   "date": "2026-10-12",
+   "client": "Brightside Dental",
+   "stars": 4,
+   "source": "Facebook",
+   "status": "replied",
+   "minutes_saved": 5
+  },
+  {
+   "date": "2026-10-13",
+   "client": "Brightside Dental",
+   "stars": 5,
+   "source": "Google",
+   "status": "replied",
+   "minutes_saved": 4
+  },
+  {
+   "date": "2026-10-14",
+   "client": "Harbor Street Bistro",
+   "stars": 2,
+   "source": "Google",
+   "status": "replied",
+   "minutes_saved": 6
+  },
+  {
+   "date": "2026-10-14",
+   "client": "Brightside Dental",
+   "stars": 4,
+   "source": "Facebook",
+   "status": "replied",
+   "minutes_saved": 4
+  },
+  {
+   "date": "2026-10-14",
+   "client": "Harbor Street Bistro",
+   "stars": 5,
+   "source": "Google",
+   "status": "replied",
+   "minutes_saved": 6
+  },
+  {
+   "date": "2026-10-14",
+   "client": "Harbor Street Bistro",
+   "stars": 5,
+   "source": "Google",
+   "status": "draft",
+   "minutes_saved": 8
+  },
+  {
+   "date": "2026-10-14",
+   "client": "Brightside Dental",
+   "stars": 2,
+   "source": "Google",
+   "status": "replied",
+   "minutes_saved": 4
+  },
+  {
+   "date": "2026-10-14",
+   "client": "Harbor Street Bistro",
+   "stars": 3,
+   "source": "Google",
+   "status": "approved",
+   "minutes_saved": 8
+  },
+  {
+   "date": "2026-10-15",
+   "client": "Brightside Dental",
+   "stars": 5,
+   "source": "Facebook",
+   "status": "replied",
+   "minutes_saved": 5
+  },
+  {
+   "date": "2026-10-15",
+   "client": "Harbor Street Bistro",
+   "stars": 3,
+   "source": "Yelp",
+   "status": "replied",
+   "minutes_saved": 8
+  },
+  {
+   "date": "2026-10-17",
+   "client": "Harbor Street Bistro",
+   "stars": 5,
+   "source": "Google",
+   "status": "replied",
+   "minutes_saved": 8
+  },
+  {
+   "date": "2026-10-17",
+   "client": "Harbor Street Bistro",
+   "stars": 5,
+   "source": "Facebook",
+   "status": "draft",
+   "minutes_saved": 4
+  },
+  {
+   "date": "2026-10-18",
+   "client": "Brightside Dental",
+   "stars": 3,
+   "source": "Facebook",
+   "status": "approved",
+   "minutes_saved": 5
+  },
+  {
+   "date": "2026-10-18",
+   "client": "Brightside Dental",
+   "stars": 3,
+   "source": "Google",
+   "status": "replied",
+   "minutes_saved": 8
+  },
+  {
+   "date": "2026-10-19",
+   "client": "Brightside Dental",
+   "stars": 4,
+   "source": "Google",
+   "status": "replied",
+   "minutes_saved": 8
+  },
+  {
+   "date": "2026-10-20",
+   "client": "Harbor Street Bistro",
+   "stars": 2,
+   "source": "Google",
+   "status": "draft",
+   "minutes_saved": 4
+  },
+  {
+   "date": "2026-10-20",
+   "client": "Brightside Dental",
+   "stars": 4,
+   "source": "Yelp",
+   "status": "replied",
+   "minutes_saved": 6
+  },
+  {
+   "date": "2026-10-21",
+   "client": "Brightside Dental",
+   "stars": 5,
+   "source": "Google",
+   "status": "draft",
+   "minutes_saved": 5
+  },
+  {
+   "date": "2026-10-22",
+   "client": "Harbor Street Bistro",
+   "stars": 5,
+   "source": "Google",
+   "status": "replied",
+   "minutes_saved": 4
+  },
+  {
+   "date": "2026-10-23",
+   "client": "Brightside Dental",
+   "stars": 5,
+   "source": "Facebook",
+   "status": "replied",
+   "minutes_saved": 4
+  },
+  {
+   "date": "2026-10-24",
+   "client": "Harbor Street Bistro",
+   "stars": 5,
+   "source": "Google",
+   "status": "replied",
+   "minutes_saved": 4
+  },
+  {
+   "date": "2026-10-24",
+   "client": "Brightside Dental",
+   "stars": 5,
+   "source": "Yelp",
+   "status": "replied",
+   "minutes_saved": 8
+  },
+  {
+   "date": "2026-10-25",
+   "client": "Harbor Street Bistro",
+   "stars": 5,
+   "source": "Google",
+   "status": "replied",
+   "minutes_saved": 6
+  },
+  {
+   "date": "2026-10-25",
+   "client": "Brightside Dental",
+   "stars": 3,
+   "source": "Google",
+   "status": "replied",
+   "minutes_saved": 6
+  },
+  {
+   "date": "2026-10-26",
+   "client": "Brightside Dental",
+   "stars": 5,
+   "source": "Yelp",
+   "status": "replied",
+   "minutes_saved": 4
+  },
+  {
+   "date": "2026-10-28",
+   "client": "Brightside Dental",
+   "stars": 4,
+   "source": "Facebook",
+   "status": "replied",
+   "minutes_saved": 5
+  },
+  {
+   "date": "2026-10-28",
+   "client": "Brightside Dental",
+   "stars": 5,
+   "source": "Yelp",
+   "status": "replied",
+   "minutes_saved": 5
+  },
+  {
+   "date": "2026-10-28",
+   "client": "Harbor Street Bistro",
+   "stars": 5,
+   "source": "Yelp",
+   "status": "replied",
+   "minutes_saved": 4
+  },
+  {
+   "date": "2026-10-28",
+   "client": "Harbor Street Bistro",
+   "stars": 5,
+   "source": "Yelp",
+   "status": "approved",
+   "minutes_saved": 4
+  },
+  {
+   "date": "2026-10-28",
+   "client": "Brightside Dental",
+   "stars": 1,
+   "source": "Google",
+   "status": "replied",
+   "minutes_saved": 5
+  },
+  {
+   "date": "2026-10-30",
+   "client": "Brightside Dental",
+   "stars": 5,
+   "source": "Google",
+   "status": "replied",
+   "minutes_saved": 5
+  },
+  {
+   "date": "2026-10-30",
+   "client": "Harbor Street Bistro",
+   "stars": 1,
+   "source": "Yelp",
+   "status": "replied",
+   "minutes_saved": 4
+  },
+  {
+   "date": "2026-10-31",
+   "client": "Brightside Dental",
+   "stars": 3,
+   "source": "Google",
+   "status": "approved",
+   "minutes_saved": 5
+  },
+  {
+   "date": "2026-10-31",
+   "client": "Harbor Street Bistro",
+   "stars": 5,
+   "source": "Facebook",
+   "status": "replied",
+   "minutes_saved": 6
+  },
+  {
+   "date": "2026-11-02",
+   "client": "Harbor Street Bistro",
+   "stars": 5,
+   "source": "Facebook",
+   "status": "replied",
+   "minutes_saved": 6
+  },
+  {
+   "date": "2026-11-02",
+   "client": "Harbor Street Bistro",
+   "stars": 2,
+   "source": "Google",
+   "status": "replied",
+   "minutes_saved": 8
+  },
+  {
+   "date": "2026-11-02",
+   "client": "Brightside Dental",
+   "stars": 2,
+   "source": "Google",
+   "status": "replied",
+   "minutes_saved": 8
+  },
+  {
+   "date": "2026-11-05",
+   "client": "Brightside Dental",
+   "stars": 4,
+   "source": "Google",
+   "status": "approved",
+   "minutes_saved": 4
+  },
+  {
+   "date": "2026-11-06",
+   "client": "Brightside Dental",
+   "stars": 2,
+   "source": "Google",
+   "status": "replied",
+   "minutes_saved": 6
+  },
+  {
+   "date": "2026-11-06",
+   "client": "Brightside Dental",
+   "stars": 4,
+   "source": "Google",
+   "status": "replied",
+   "minutes_saved": 5
+  },
+  {
+   "date": "2026-11-07",
+   "client": "Harbor Street Bistro",
+   "stars": 3,
+   "source": "Google",
+   "status": "approved",
+   "minutes_saved": 5
+  },
+  {
+   "date": "2026-11-07",
+   "client": "Harbor Street Bistro",
+   "stars": 2,
+   "source": "Yelp",
+   "status": "draft",
+   "minutes_saved": 4
+  },
+  {
+   "date": "2026-11-09",
+   "client": "Harbor Street Bistro",
+   "stars": 4,
+   "source": "Google",
+   "status": "replied",
+   "minutes_saved": 6
+  },
+  {
+   "date": "2026-11-09",
+   "client": "Brightside Dental",
+   "stars": 1,
+   "source": "Google",
+   "status": "replied",
+   "minutes_saved": 5
+  },
+  {
+   "date": "2026-11-10",
+   "client": "Brightside Dental",
+   "stars": 4,
+   "source": "Facebook",
+   "status": "draft",
+   "minutes_saved": 5
+  },
+  {
+   "date": "2026-11-11",
+   "client": "Harbor Street Bistro",
+   "stars": 5,
+   "source": "Google",
+   "status": "replied",
+   "minutes_saved": 6
+  },
+  {
+   "date": "2026-11-11",
+   "client": "Harbor Street Bistro",
+   "stars": 5,
+   "source": "Google",
+   "status": "replied",
+   "minutes_saved": 6
+  },
+  {
+   "date": "2026-11-11",
+   "client": "Brightside Dental",
+   "stars": 5,
+   "source": "Facebook",
+   "status": "replied",
+   "minutes_saved": 8
+  },
+  {
+   "date": "2026-11-11",
+   "client": "Harbor Street Bistro",
+   "stars": 5,
+   "source": "Yelp",
+   "status": "approved",
+   "minutes_saved": 8
+  },
+  {
+   "date": "2026-11-14",
+   "client": "Harbor Street Bistro",
+   "stars": 2,
+   "source": "Google",
+   "status": "replied",
+   "minutes_saved": 8
+  },
+  {
+   "date": "2026-11-14",
+   "client": "Harbor Street Bistro",
+   "stars": 5,
+   "source": "Yelp",
+   "status": "replied",
+   "minutes_saved": 4
+  },
+  {
+   "date": "2026-11-18",
+   "client": "Brightside Dental",
+   "stars": 1,
+   "source": "Google",
+   "status": "replied",
+   "minutes_saved": 8
+  },
+  {
+   "date": "2026-11-18",
+   "client": "Harbor Street Bistro",
+   "stars": 5,
+   "source": "Facebook",
+   "status": "replied",
+   "minutes_saved": 5
+  },
+  {
+   "date": "2026-11-19",
+   "client": "Harbor Street Bistro",
+   "stars": 5,
+   "source": "Yelp",
+   "status": "replied",
+   "minutes_saved": 4
+  },
+  {
+   "date": "2026-11-20",
+   "client": "Brightside Dental",
+   "stars": 5,
+   "source": "Google",
+   "status": "replied",
+   "minutes_saved": 4
+  },
+  {
+   "date": "2026-11-21",
+   "client": "Brightside Dental",
+   "stars": 1,
+   "source": "Facebook",
+   "status": "replied",
+   "minutes_saved": 4
+  },
+  {
+   "date": "2026-11-21",
+   "client": "Harbor Street Bistro",
+   "stars": 4,
+   "source": "Google",
+   "status": "approved",
+   "minutes_saved": 5
+  },
+  {
+   "date": "2026-11-21",
+   "client": "Harbor Street Bistro",
+   "stars": 5,
+   "source": "Yelp",
+   "status": "replied",
+   "minutes_saved": 5
+  },
+  {
+   "date": "2026-11-22",
+   "client": "Brightside Dental",
+   "stars": 5,
+   "source": "Yelp",
+   "status": "replied",
+   "minutes_saved": 4
+  },
+  {
+   "date": "2026-11-23",
+   "client": "Brightside Dental",
+   "stars": 4,
+   "source": "Google",
+   "status": "replied",
+   "minutes_saved": 8
+  },
+  {
+   "date": "2026-11-23",
+   "client": "Harbor Street Bistro",
+   "stars": 5,
+   "source": "Facebook",
+   "status": "draft",
+   "minutes_saved": 5
+  },
+  {
+   "date": "2026-11-23",
+   "client": "Harbor Street Bistro",
+   "stars": 5,
+   "source": "Facebook",
+   "status": "replied",
+   "minutes_saved": 4
+  },
+  {
+   "date": "2026-11-24",
+   "client": "Brightside Dental",
+   "stars": 5,
+   "source": "Google",
+   "status": "replied",
+   "minutes_saved": 4
+  },
+  {
+   "date": "2026-11-24",
+   "client": "Brightside Dental",
+   "stars": 3,
+   "source": "Google",
+   "status": "draft",
+   "minutes_saved": 5
+  },
+  {
+   "date": "2026-11-25",
+   "client": "Harbor Street Bistro",
+   "stars": 5,
+   "source": "Yelp",
+   "status": "replied",
+   "minutes_saved": 4
+  }
+ ]
+}

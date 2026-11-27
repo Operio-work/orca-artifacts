@@ -1,0 +1,9 @@
+import { error } from '@sveltejs/kit';
+import type { PageServerLoad } from './$types';
+import { getDashboard } from '#lib/server/dashboards.js';
+
+export const load: PageServerLoad = async ({ params }) => {
+	const spec = await getDashboard(params.slug);
+	if (!spec) error(404, 'Dashboard not found');
+	return { spec };
+};

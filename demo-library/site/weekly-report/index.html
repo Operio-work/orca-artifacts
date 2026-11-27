@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Harbor Street Bistro · weekly report · ORCA Artifacts</title>
+<link rel="icon" href="/icons/orca-artifacts.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/orca.css">
+</head>
+<body>
+<div class="wrap">
+  <div class="brandbar"><img src="/icons/orca-artifacts.svg" alt=""><span class="word"><a href="../">ORCA Artifacts</a> · Demo</span></div>
+  <header class="page">
+    <div>
+      <div class="label">HARBOR STREET BISTRO</div>
+      <h1 data-t="title"></h1>
+      <p class="sub" id="week"></p>
+    </div>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="es">ES</button>
+      <button type="button" data-lang="en">EN</button>
+    </div>
+  </header>
+
+  <div id="err" class="err" hidden></div>
+  <div class="stats" id="stats"></div>
+
+  <h2 data-t="main_h"></h2>
+  <p class="hint" data-t="main_hint"></p>
+  <div class="tbl"><table>
+    <thead><tr><th data-t="th_date"></th><th data-t="th_item"></th><th data-t="th_status"></th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table></div>
+
+  <footer class="page">
+    <span id="updated"></span>
+    <span><span data-t="source"></span> <code>site/weekly-report/</code></span>
+  </footer>
+</div>
+
+<script>
+// Every visible string lives here in both languages. Data text carries both too (item_es / item_en).
+const T = {
+  es: { title: "Reporte semanal", main_h: "Esta semana", main_hint: "Esperando = un agente lo preparó y falta tu aprobación.", th_date: "Fecha", th_item: "Qué", th_status: "Estado",
+        st_sent: "Enviado", st_approved: "Aprobado", st_waiting: "Esperando", s_done: "tareas hechas", s_wait: "esperan aprobación", s_min: "minutos ahorrados",
+        updated: "Actualizado {d}", source: "Fuente:", err: "No se pudo cargar data.json." },
+  en: { title: "Weekly report", main_h: "This week", main_hint: "Waiting = an agent prepared it and it needs your approval.", th_date: "Date", th_item: "What", th_status: "Status",
+        st_sent: "Sent", st_approved: "Approved", st_waiting: "Waiting", s_done: "tasks done", s_wait: "waiting for approval", s_min: "minutes saved",
+        updated: "Updated {d}", source: "Source:", err: "Couldn't load data.json." }
+};
+let lang = "es";
+try { const s = localStorage.getItem("orca-lang") || (document.cookie.match(/(?:^|; )lang=(es|en)/) || [])[1] || (/^en/i.test(navigator.language || "") ? "en" : "es"); if (s === "es" || s === "en") lang = s; } catch {}
+let data = null;
+const $ = (s) => document.querySelector(s);
+const t = (k) => T[lang][k];
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const bi = (o, k) => o[k + "_" + lang] || o[k + "_en"] || "";
+const fmt = (d) => new Date(d + "T12:00:00Z").toLocaleDateString(lang === "es" ? "es-MX" : "en-US", { day: "numeric", month: "short", timeZone: "UTC" });
+const pill = { sent: "live", approved: "ready", waiting: "pending" };
+
+function render() {
+  document.documentElement.lang = lang;
+  document.querySelectorAll("[data-t]").forEach((el) => (el.textContent = t(el.dataset.t)));
+  document.querySelectorAll("[data-lang]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
+  if (!data) return;
+  const it = data.items || [];
+  $("#week").textContent = bi(data, "week");
+  $("#stats").innerHTML = [[it.filter((r) => r.status !== "waiting").length, "s_done"], [it.filter((r) => r.status === "waiting").length, "s_wait"], [data.minutes_saved, "s_min"]]
+    .map(([n, k]) => `<div class="stat"><b>${n}</b><span>${esc(t(k))}</span></div>`).join("");
+  $("#rows").innerHTML = it.map((r) => `<tr><td class="nowrap">${esc(fmt(r.date))}</td><td>${esc(bi(r, "item"))}</td><td><span class="pill ${pill[r.status] || "wait"}">${esc(t("st_" + r.status))}</span></td></tr>`).join("");
+  if (data.updated) $("#updated").textContent = t("updated").replace("{d}", new Date(data.updated).toLocaleString(lang === "es" ? "es-MX" : "en-US", { dateStyle: "medium", timeStyle: "short" }));
+}
+document.addEventListener("click", (e) => {
+  const b = e.target.closest("[data-lang]");
+  if (!b) return;
+  lang = b.dataset.lang;
+  try { localStorage.setItem("orca-lang", lang); document.cookie = "lang=" + lang + "; path=/; max-age=31536000; samesite=lax"; } catch {}
+  render();
+});
+render();
+fetch("data.json", { cache: "no-store" }).then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
+  .then((d) => { data = d; render(); })
+  .catch(() => { const e = $("#err"); e.textContent = t("err"); e.hidden = false; });
+</script>
+</body>
+</html>
