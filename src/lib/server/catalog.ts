@@ -15,6 +15,8 @@ interface PageMeta {
 	tags?: string[];
 	note?: string;
 	trilium?: string; // old name for note
+	status?: 'draft' | 'rejected';
+	by?: string;
 	hidden?: boolean;
 }
 
@@ -42,7 +44,7 @@ async function pages(): Promise<CatalogItem[]> {
 		const st = await stat(index).catch(() => null);
 		if (!st) continue;
 		const meta = await readJson<PageMeta>(join(dir, 'meta.json'), {});
-		if (meta.hidden) continue;
+		if (meta.hidden || meta.status === 'rejected') continue;
 		const data = await readJson<{ updated?: string }>(join(dir, 'data.json'), {});
 		const fallback = (await titleFromHtml(index)) || ent.name;
 		out.push({
@@ -54,6 +56,8 @@ async function pages(): Promise<CatalogItem[]> {
 			description: l(meta.description),
 			tags: meta.tags ?? [],
 			note: meta.note ?? meta.trilium,
+			status: meta.status === 'draft' ? 'draft' : undefined,
+			by: typeof meta.by === 'string' ? meta.by.slice(0, 80) : undefined,
 			updated: data.updated ?? st.mtime.toISOString()
 		});
 	}
@@ -98,11 +102,13 @@ function dashItem(s: DashboardSpec): CatalogItem {
 		description: l(s.description),
 		tags: s.tags ?? [],
 		note: s.note ?? s.trilium,
+		status: s.status === 'draft' ? 'draft' : undefined,
+		by: s.by,
 		updated: s.updated
 	};
 }
 
 export async function loadCatalog(): Promise<CatalogItem[]> {
 	const [p, a, d] = await Promise.all([pages(), archive(), listDashboards()]);
-	return [...d.map(dashItem), ...p, ...a];
+	return [...d.filter((s) => s.status !== 'rejected').map(dashItem), ...p, ...a];
 }

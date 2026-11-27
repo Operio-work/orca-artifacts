@@ -1,6 +1,7 @@
 import { error, json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 import { setPin, updateOrganize } from '#lib/server/state.js';
+import { review } from '#lib/server/review.js';
 
 const KEY = /^(page|dashboard|archive):[a-z0-9][a-z0-9-]{0,80}$/;
 const clean = (s: unknown, max = 40) => String(s ?? '').replace(/[\u0000-\u001f<>]/g, '').trim().slice(0, max);
@@ -12,6 +13,13 @@ export const POST: RequestHandler = async ({ request, locals }) => {
 	if (key !== undefined && !KEY.test(key)) error(400, 'bad key');
 
 	switch (b.op) {
+		case 'approve':
+		case 'reject': {
+			if (!key) error(400, 'key required');
+			const ok = await review(key, b.op, locals.user);
+			if (!ok) error(409, 'not a draft');
+			return json({ ok });
+		}
 		case 'pin':
 			return json({ pins: await setPin(locals.user, key!, Boolean(b.on)) });
 		case 'collection.create': {

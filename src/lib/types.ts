@@ -11,6 +11,8 @@ export interface CatalogItem {
 	description: L10n;
 	tags: string[]; // tags from the artifact itself (meta.json / spec)
 	note?: string; // linked note: an id (resolved through the library's notes.url) or a full URL
+	status?: 'draft'; // waiting for a person to approve it (rejected ones are not listed)
+	by?: string; // who published it (an agent or a person)
 	updated?: string; // ISO or YYYY-MM-DD
 	origin?: string; // archive: html | claude-docs
 }
@@ -109,6 +111,8 @@ export interface DashboardSpec {
 	tags?: string[];
 	note?: string; // linked note id or URL (footer link)
 	trilium?: string; // old name for note; still read
+	status?: 'draft' | 'rejected'; // set by publish; removed on approval
+	by?: string; // who published it
 	range?: boolean; // show the 7/30/90/all picker (uses each source's dateField)
 	sources: Record<string, SourceSpec>;
 	filters?: FilterSpec[];

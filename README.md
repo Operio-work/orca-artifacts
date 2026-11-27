@@ -74,6 +74,8 @@ the default tokens, for your colours.
 | `ARTIFACTS_USER_NAME_HEADER` | — | with `header`: display name header |
 | `ARTIFACTS_STORAGE` | `folder` | `git` commits the app's saves after 20 s of quiet |
 | `ARTIFACTS_GIT_PUSH` | `0` | `1` pushes after each commit |
+| `ARTIFACTS_PUBLISH_TOKEN` | — | turns on `POST /api/publish` for ORCA and scripts (24+ characters) |
+| `ARTIFACTS_PUBLISH_DIRECT` | `0` | `1` lets a publisher skip approval |
 | `ARTIFACTS_TZ` | config `timeZone`, else `UTC` | calendar days in dashboards |
 
 The app has **no login of its own**. Keep it on `localhost`, a private network (Tailscale works well), or behind
@@ -82,8 +84,10 @@ a proxy that signs people in. Anyone who can open it can edit dashboards and col
 ## With ORCA
 
 [ORCA](https://github.com/Operio-work/orca) runs your AI agents; ORCA Artifacts is where their work shows up.
-Today an ORCA routine can write a dashboard's data file and it appears on the next reload. Coming next:
-publishing from ORCA, drafts that wait for your approval, and an Artifacts tab inside the ORCA panel.
+Agents publish pages and dashboards with `operio-orca artifact publish`; they arrive as **drafts** under
+**To approve** (with a count on the app icon) and nobody sees them on the list until a person approves.
+Routines refresh numbers with `operio-orca artifact data`. Turn it on with `ARTIFACTS_PUBLISH_TOKEN`; details in
+[docs/publishing.md](docs/publishing.md).
 
 **ORCA Managed by Operio** hosts both for you, with team roles, share links, alerts, backups, and dashboards
 built for your business: [make.operio.work](https://make.operio.work).

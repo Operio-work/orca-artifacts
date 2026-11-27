@@ -37,6 +37,12 @@ export const AUTOCOMMIT = STORAGE === 'git';
 /** Push after each commit. Off unless asked (old ARTIFACTS_AUTOCOMMIT=1 setups pushed). */
 export const GIT_PUSH = process.env.ARTIFACTS_GIT_PUSH ? process.env.ARTIFACTS_GIT_PUSH === '1' : legacyAutocommit;
 
+/** Publishing from ORCA or scripts (POST /api/publish, Bearer token). Unset or shorter than 24 = off. */
+const tok = process.env.ARTIFACTS_PUBLISH_TOKEN ?? '';
+export const PUBLISH_TOKEN = tok.length >= 24 ? tok : '';
+/** 1 = a publisher may skip the approval step (draft: false). Default: everything lands as a draft. */
+export const PUBLISH_DIRECT = process.env.ARTIFACTS_PUBLISH_DIRECT === '1';
+
 const DEFAULT_BRAND: Brand = {
 	name: 'ORCA Artifacts',
 	org: '',

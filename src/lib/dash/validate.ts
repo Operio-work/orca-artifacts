@@ -18,6 +18,8 @@ export function validateSpec(s: unknown): string[] {
 	if (d.tags !== undefined && (!Array.isArray(d.tags) || d.tags.some((t) => typeof t !== 'string'))) e.push('tags must be strings');
 	for (const k of ['note', 'trilium'] as const)
 		if (d[k] !== undefined && d[k] !== '' && !/^([A-Za-z0-9_-]{1,64}|https?:\/\/\S{1,500})$/.test(String(d[k]))) e.push(`${k}: a note id (letters, digits, - _) or an http(s) URL`);
+	if (d.status !== undefined && d.status !== 'draft' && d.status !== 'rejected') e.push('status: draft or rejected');
+	if (d.by !== undefined && (typeof d.by !== 'string' || d.by.length > 80)) e.push('by: up to 80 characters');
 	if (!d.sources || typeof d.sources !== 'object' || !Object.keys(d.sources).length) e.push('at least one source');
 	const srcs = new Set(Object.keys(d.sources ?? {}));
 	for (const [k, src] of Object.entries(d.sources ?? {})) {

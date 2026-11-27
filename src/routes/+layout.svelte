@@ -12,6 +12,12 @@
 	// svelte-ignore state_referenced_locally
 	tz.zone = data.brand.timeZone;
 	onMount(initPwa);
+	// Drafts waiting for approval show as a number on the installed app's icon.
+	$effect(() => {
+		const n = data.drafts;
+		const nav = navigator as Navigator & { setAppBadge?: (n?: number) => Promise<void>; clearAppBadge?: () => Promise<void> };
+		(n ? nav.setAppBadge?.(n) : nav.clearAppBadge?.())?.catch(() => {});
+	});
 </script>
 
 <svelte:head>

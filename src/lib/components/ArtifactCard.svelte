@@ -26,7 +26,8 @@
 		onassign,
 		ontags,
 		onnewcollection,
-		ontag
+		ontag,
+		onreview
 	}: {
 		item: ViewItem;
 		collections: Collection[];
@@ -36,6 +37,7 @@
 		ontags: (i: ViewItem) => void;
 		onnewcollection: (i: ViewItem) => void;
 		ontag: (tag: string) => void;
+		onreview?: (i: ViewItem, verdict: 'approve' | 'reject') => void;
 	} = $props();
 
 	const kindLabel = $derived(t(`kind_${item.kind}`));
@@ -105,7 +107,17 @@
 	</Button>
 {/snippet}
 
+{#snippet review()}
+	{#if item.status === 'draft' && onreview}
+		<div class="relative z-10 flex flex-wrap items-center gap-2">
+			<Button size="xs" onclick={() => onreview(item, 'approve')}><Check /> {t('approve')}</Button>
+			<Button size="xs" variant="outline" onclick={() => onreview(item, 'reject')}>{t('reject')}</Button>
+		</div>
+	{/if}
+{/snippet}
+
 {#snippet meta()}
+	{#if item.status === 'draft'}<span class="rounded-full bg-accent px-1.5 text-ink">{t('draft')}</span>{#if item.by}<span class="truncate normal-case">· {item.by}</span>{/if}<span>·</span>{/if}
 	<span class="inline-flex items-center gap-1"><KindIcon kind={item.kind} class="size-3.5" />{kindLabel}</span>
 	{#if item.updated}<span>· {fmtDate(item.updated)}</span>{/if}
 	{#if col}<span class="truncate">· {col.name}</span>{/if}
@@ -136,6 +148,7 @@
 			<p class="mt-1.5 line-clamp-3 text-sm text-[var(--text-secondary)]">{tl(item.description)}</p>
 		{/if}
 		<div class="mt-auto pt-3">
+			{#if item.status === 'draft'}<div class="mb-3">{@render review()}</div>{/if}
 			{#if item.allTags.length}<div class="relative z-10 mb-2 flex flex-wrap gap-1">{@render tags()}</div>{/if}
 			<div class="flex min-w-0 items-center gap-1 font-mono text-[11px] tracking-wide text-[var(--text-tertiary)] uppercase">
 				{@render meta()}
@@ -151,7 +164,7 @@
 				{@render meta()}
 			</div>
 		</div>
-		{#if item.allTags.length}<div class="relative z-10 hidden max-w-[40%] flex-wrap justify-end gap-1 md:flex">{@render tags()}</div>{/if}
+		{#if item.status === 'draft'}{@render review()}{:else if item.allTags.length}<div class="relative z-10 hidden max-w-[40%] flex-wrap justify-end gap-1 md:flex">{@render tags()}</div>{/if}
 		<div class="relative z-10 flex shrink-0">
 			{@render pinBtn()}
 			{@render menu()}

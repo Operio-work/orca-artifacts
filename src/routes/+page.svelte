@@ -27,6 +27,7 @@
 	import ListIcon from '@lucide/svelte/icons/list';
 	import SlidersHorizontal from '@lucide/svelte/icons/sliders-horizontal';
 	import X from '@lucide/svelte/icons/x';
+	import Inbox from '@lucide/svelte/icons/inbox';
 	import NotebookText from '@lucide/svelte/icons/notebook-text';
 
 	let { data } = $props();
@@ -42,7 +43,7 @@
 	// ---- filters, mirrored in the URL so a view can be bookmarked ----
 	const sp = untrack(() => page.url.searchParams);
 	let q = $state(sp.get('q') ?? '');
-	let nav = $state(sp.get('kind') ?? sp.get('c') ? (sp.get('kind') ? `kind:${sp.get('kind')}` : `c:${sp.get('c')}`) : sp.get('pinned') ? 'pinned' : 'all');
+	let nav = $state(sp.get('kind') ?? sp.get('c') ? (sp.get('kind') ? `kind:${sp.get('kind')}` : `c:${sp.get('c')}`) : sp.get('pinned') ? 'pinned' : sp.get('drafts') ? 'drafts' : 'all');
 	let tag = $state(sp.get('tag') ?? '');
 	let sort = $state<'recent' | 'name'>(sp.get('sort') === 'name' ? 'name' : 'recent');
 	let view = $state<'grid' | 'list'>('grid');
@@ -64,6 +65,7 @@
 		if (nav.startsWith('kind:')) u.searchParams.set('kind', nav.slice(5));
 		if (nav.startsWith('c:')) u.searchParams.set('c', nav.slice(2));
 		if (nav === 'pinned') u.searchParams.set('pinned', '1');
+		if (nav === 'drafts') u.searchParams.set('drafts', '1');
 		if (tag) u.searchParams.set('tag', tag);
 		if (sort === 'name') u.searchParams.set('sort', 'name');
 		if (u.href !== page.url.href) untrack(() => replaceState(u, page.state));
@@ -74,9 +76,13 @@
 	const hay = (i: ViewItem) =>
 		norm([i.title.es, i.title.en, i.description.es, i.description.en, i.slug, colName(i.collection), ...i.allTags.map((x) => '#' + x), t(`kind_${i.kind}`)].join(' '));
 
+	// Drafts (published by an agent, not approved yet) only show under "To approve".
+	const live = $derived(items.filter((i) => !i.status));
+	const drafts = $derived(items.filter((i) => i.status === 'draft'));
+
 	const filtered = $derived.by(() => {
 		const tokens = norm(q).split(/\s+/).filter(Boolean);
-		let list = items.filter((i) => {
+		let list = (nav === 'drafts' ? drafts : live).filter((i) => {
 			if (nav === 'pinned' && !i.pinned) return false;
 			if (nav.startsWith('kind:') && i.kind !== nav.slice(5)) return false;
 			if (nav.startsWith('c:') && i.collection !== nav.slice(2)) return false;
@@ -100,26 +106,34 @@
 		return list;
 	});
 
-	const pinnedItems = $derived(data.pins.map((k) => items.find((i) => i.key === k)).filter((i): i is ViewItem => !!i));
+	const pinnedItems = $derived(data.pins.map((k) => live.find((i) => i.key === k)).filter((i): i is ViewItem => !!i));
 	const showPinnedRow = $derived(nav === 'all' && !q && !tag && pinnedItems.length > 0);
 	const counts = $derived({
-		all: items.length,
+		all: live.length,
 		pinned: pinnedItems.length,
-		dashboard: items.filter((i) => i.kind === 'dashboard').length,
-		page: items.filter((i) => i.kind === 'page').length,
-		archive: items.filter((i) => i.kind === 'archive').length
+		drafts: drafts.length,
+		dashboard: live.filter((i) => i.kind === 'dashboard').length,
+		page: live.filter((i) => i.kind === 'page').length,
+		archive: live.filter((i) => i.kind === 'archive').length
 	});
 	const allTags = $derived.by(() => {
 		const m = new Map<string, number>();
-		for (const i of items) for (const tg of i.allTags) m.set(tg, (m.get(tg) ?? 0) + 1);
+		for (const i of live) for (const tg of i.allTags) m.set(tg, (m.get(tg) ?? 0) + 1);
 		return [...m].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
 	});
 	const navTitle = $derived(
-		nav === 'all' ? t('all') : nav === 'pinned' ? t('pinned') : nav.startsWith('kind:') ? t(nav.slice(5) as Kind) : colName(nav.slice(2))
+		nav === 'all' ? t('all') : nav === 'pinned' ? t('pinned') : nav === 'drafts' ? t('drafts') : nav.startsWith('kind:') ? t(nav.slice(5) as Kind) : colName(nav.slice(2))
 	);
 
 	// ---- actions ----
 	const refresh = () => invalidate('app:catalog');
+	async function onreview(i: ViewItem, verdict: 'approve' | 'reject') {
+		await stateOp({ op: verdict, key: i.key });
+		const { toast } = await import('svelte-sonner');
+		toast.success(t(verdict === 'approve' ? 'approved' : 'rejected'));
+		items = items.filter((x) => x.key !== i.key);
+		refresh();
+	}
 	async function onpin(i: ViewItem) {
 		const on = !i.pinned;
 		i.pinned = on;
@@ -220,11 +234,13 @@
 	<nav class="grid gap-0.5" aria-label={t('filters')}>
 		{#snippet iAll()}<Layers />{/snippet}
 		{#snippet iPin()}<Pin />{/snippet}
+		{#snippet iDraft()}<Inbox />{/snippet}
 		{#snippet iDash()}<KindIcon kind="dashboard" />{/snippet}
 		{#snippet iPage()}<KindIcon kind="page" />{/snippet}
 		{#snippet iArch()}<KindIcon kind="archive" />{/snippet}
 		{@render navBtn('all', t('all'), counts.all, iAll)}
 		{@render navBtn('pinned', t('pinned'), counts.pinned, iPin)}
+		{#if counts.drafts || nav === 'drafts'}{@render navBtn('drafts', t('drafts'), counts.drafts, iDraft)}{/if}
 		{@render navBtn('kind:dashboard', t('dashboard'), counts.dashboard, iDash)}
 		{@render navBtn('kind:page', t('page'), counts.page, iPage)}
 		{@render navBtn('kind:archive', t('archive'), counts.archive, iArch)}
@@ -238,7 +254,7 @@
 		{#each collections as c (c.id)}
 			<div class="group/col relative">
 				{#snippet iCol()}<Folder />{/snippet}
-				{@render navBtn(`c:${c.id}`, c.name, items.filter((i) => i.collection === c.id).length, iCol)}
+				{@render navBtn(`c:${c.id}`, c.name, live.filter((i) => i.collection === c.id).length, iCol)}
 				<div class="absolute top-1/2 right-7 -translate-y-1/2 opacity-0 group-hover/col:opacity-100 focus-within:opacity-100">
 					<DropdownMenu.Root>
 						<DropdownMenu.Trigger>
@@ -316,7 +332,7 @@
 					<h2 id="pinned-h" class="label-mono mb-2 flex items-center gap-1.5"><Pin class="size-3.5" />{t('pinned')}</h2>
 					<div class="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3">
 						{#each pinnedItems as item (item.key)}
-							<ArtifactCard {item} {collections} {onpin} {onassign} {ontags} onnewcollection={newCollection} ontag={(x) => (tag = x)} />
+							<ArtifactCard {item} {collections} {onpin} {onassign} {ontags} onnewcollection={newCollection} ontag={(x) => (tag = x)} {onreview} />
 						{/each}
 					</div>
 				</section>
@@ -338,13 +354,13 @@
 				{:else if view === 'grid'}
 					<div class="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3">
 						{#each filtered as item (item.key)}
-							<ArtifactCard {item} {collections} {onpin} {onassign} {ontags} onnewcollection={newCollection} ontag={(x) => (tag = x)} />
+							<ArtifactCard {item} {collections} {onpin} {onassign} {ontags} onnewcollection={newCollection} ontag={(x) => (tag = x)} {onreview} />
 						{/each}
 					</div>
 				{:else}
 					<div class="overflow-hidden rounded-lg border bg-card">
 						{#each filtered as item (item.key)}
-							<ArtifactCard {item} {collections} view="list" {onpin} {onassign} {ontags} onnewcollection={newCollection} ontag={(x) => (tag = x)} />
+							<ArtifactCard {item} {collections} view="list" {onpin} {onassign} {ontags} onnewcollection={newCollection} ontag={(x) => (tag = x)} {onreview} />
 						{/each}
 					</div>
 				{/if}

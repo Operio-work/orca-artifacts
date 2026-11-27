@@ -55,8 +55,10 @@ o detrás de un proxy que pida acceso. Quien pueda abrirla puede editar tableros
 ## Con ORCA
 
 [ORCA](https://github.com/Operio-work/orca) corre tus agentes de IA; ORCA Artifacts es donde se ve su trabajo.
-Hoy una rutina de ORCA puede escribir el archivo de datos de un tablero y aparece al recargar. Lo que sigue:
-publicar desde ORCA, borradores que esperan tu aprobación y una pestaña Artifacts dentro del panel de ORCA.
+Los agentes publican páginas y tableros con `operio-orca artifact publish`; llegan como **borradores** a
+**Por aprobar** (con un número en el ícono de la app) y nadie los ve en la lista hasta que una persona los
+aprueba. Las rutinas actualizan cifras con `operio-orca artifact data`. Se activa con `ARTIFACTS_PUBLISH_TOKEN`;
+detalles en [docs/publishing.md](docs/publishing.md).
 
 **ORCA Managed by Operio** aloja ambos por ti, con roles de equipo, enlaces para compartir, alertas, respaldos y
 tableros hechos para tu negocio: [make.operio.work](https://make.operio.work).

@@ -1,6 +1,6 @@
 {
 	"name": "orca-artifacts",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"private": true,
 	"description": "ORCA Artifacts: a self-hosted PWA that lists, organizes and renders your live pages and dashboards. Works alone or with ORCA.",
 	"license": "MIT",

@@ -8,6 +8,8 @@
 	import Pencil from '@lucide/svelte/icons/pencil';
 	import ArrowLeft from '@lucide/svelte/icons/arrow-left';
 	import { noteHref } from '#lib/notes.js';
+	import { goto } from '$app/navigation';
+	import Check from '@lucide/svelte/icons/check';
 
 	let { data } = $props();
 	const spec = $derived(data.spec);
@@ -19,6 +21,12 @@
 	const updated = $derived(
 		[spec.updated, ...Object.values(data.data).map((d) => d.updated)].filter(Boolean).sort().at(-1)
 	);
+	async function decide(verdict: 'approve' | 'reject') {
+		await stateOp({ op: verdict, key: `dashboard:${spec.slug}` });
+		const { toast } = await import('svelte-sonner');
+		toast.success(t(verdict === 'approve' ? 'approved' : 'rejected'));
+		await goto(verdict === 'approve' ? `/d/${spec.slug}` : '/?drafts=1', { invalidateAll: true });
+	}
 	async function togglePin() {
 		pinned = !pinned;
 		await stateOp({ op: 'pin', key: `dashboard:${spec.slug}`, on: pinned });
@@ -38,6 +46,14 @@
 	</Brandbar>
 
 	<a href="/" class="mt-5 inline-flex items-center gap-1 text-sm text-[var(--text-tertiary)] hover:text-[var(--text-primary)]"><ArrowLeft class="size-3.5" />{t('back')}</a>
+
+	{#if spec.status === 'draft'}
+		<div role="status" class="mt-4 flex flex-wrap items-center gap-3 rounded-lg border border-primary bg-accent px-4 py-3 text-sm">
+			<span class="min-w-0 flex-1">{t('draftBanner')}{#if spec.by} · {spec.by}{/if}</span>
+			<Button size="sm" onclick={() => decide('approve')}><Check /> {t('approve')}</Button>
+			<Button size="sm" variant="outline" onclick={() => decide('reject')}>{t('reject')}</Button>
+		</div>
+	{/if}
 	<header class="mt-2 mb-5">
 		<div class="label-mono">{t('kind_dashboard')}{#if spec.tags?.length} · {spec.tags.map((x) => '#' + x).join(' ')}{/if}</div>
 		<h1 class="mt-2 text-[length:var(--text-2xl)] leading-tight font-extrabold tracking-tight text-balance">{tl(spec.title)}</h1>
